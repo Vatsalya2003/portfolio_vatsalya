@@ -51,9 +51,7 @@ html {
     margin: 0 auto;
     padding: 0 24px;
 }
-/* ===========================
-   VERTICAL RIGHT SIDE NAVIGATION
-   =========================== */
+
 /* ===========================
    VERTICAL RIGHT SIDE NAVIGATION
    =========================== */
@@ -110,7 +108,6 @@ html {
     height: 50%;
 }
 
-/* White mode colors */
 :root.white-mode .nav-link {
     color: #666;
 }
@@ -124,7 +121,6 @@ html {
     background: #000;
 }
 
-/* CONTACT SECTION - FORCE WHITE NAV */
 .contact ~ * .nav-link,
 body:has(.contact) .nav-link {
     color: #999 !important;
@@ -163,14 +159,6 @@ body:has(#contact:target) .nav-link::before {
     }
 }
 
-/* Nav on contact section - WHITE indicator line */
-.side-nav.nav-on-contact .nav-link::before {
-    background: #fff !important;
-}
-
-.side-nav.nav-on-contact .nav-link.active::before {
-    background: #fff !important;
-}
 
 /* ===========================
     CURSOR
@@ -355,19 +343,18 @@ body:has(#contact:target) .nav-link::before {
 #cursor.text-small {
     height: 25px !important; /* For body text */
 }
-
 /* ===========================
    FIXED SOCIAL ICONS
    =========================== */
 
 .social-icons-fixed {
-    position: fixed;
-    top: 48px;
-    left: 48px;
-    display: flex;
-    flex-direction: row;
-    gap: 32px;
-    z-index: 1000;
+    position: fixed !important;
+    top: 48px !important;
+    left: 48px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 32px !important;
+    z-index: 1000 !important;
 }
 
 .social-icon-link {
@@ -1087,15 +1074,20 @@ a.btn {
 
 @media (max-width: 768px) {
     .social-icons-fixed {
-        top: 32px;
-        right: 32px;
-        gap: 24px;
-        flex-direction: column;
+        left: auto !important;
+        right: 32px !important;
+        top: 24px !important;
+        flex-direction: row !important; /* HORIZONTAL */
+        gap: 24px !important;
     }
     
     .social-icon {
-        width: 22px;
-        height: 22px;
+        width: 22px !important;
+        height: 22px !important;
+    }
+    
+    .social-icon-link:hover .social-icon {
+        transform: translateY(-4px) !important;
     }
     
     .social-icon-link:hover .social-icon {
@@ -1145,21 +1137,52 @@ a.btn {
     .education {
         padding: 32px 24px;
     }
+
+     #cursor {
+        display: none !important;
+    }
+    
+    * {
+        cursor: auto !important; /* Show normal cursor on mobile */
+    }
+    .btn-fill {
+        transition: none !important; /* Remove animation */
+    }
+    
+    .btn:active .btn-fill {
+        width: 400% !important;
+        height: 400% !important;
+        transition: none !important;
+    }
+    
+    .btn:active span {
+        color: #000 !important;
+    }
+    
+    /* Contact send button */
+    .btn-send-contact:active::before {
+        width: 400% !important;
+        height: 400% !important;
+        transition: none !important;
+    }
+    
+    .btn-send-contact:active span {
+        color: #000 !important;
+    }
 }
 
 @media (max-width: 480px) {
-    .social-icons-fixed {
-        top: 24px;
-        right: 24px;
-        gap: 20px;
-        flex-direction: column;
+     .social-icons-fixed {
+        right: 24px !important;
+        top: 20px !important;
+        flex-direction: row !important; 
+        gap: 20px !important;
     }
     
     .social-icon {
-        width: 20px;
-        height: 20px;
+        width: 20px !important;
+        height: 20px !important;
     }
-
     .hero {
         padding: 0 24px;
     }
