@@ -331,3 +331,31 @@ navLinks.forEach(link => {
         }
     });
 });
+// ===========================
+// BENTO CARD FILL FROM CURSOR (Desktop Only)
+// ===========================
+
+const bentoCards = document.querySelectorAll('.bento-card');
+
+// Only add cursor tracking on desktop
+if (window.innerWidth > 768) {
+    bentoCards.forEach(card => {
+        card.addEventListener('mouseenter', function(e) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--x', x + 'px');
+            card.style.setProperty('--y', y + 'px');
+        });
+        
+        card.addEventListener('mousemove', function(e) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--x', x + 'px');
+            card.style.setProperty('--y', y + 'px');
+        });
+    });
+}
