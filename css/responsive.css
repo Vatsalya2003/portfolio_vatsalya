@@ -1,0 +1,232 @@
+/* ===========================
+   RESPONSIVE STYLES
+   =========================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 0 60px;
+    }
+
+    .contact {
+        padding: 80px 80px;
+    }
+
+    .contact-split-container {
+        gap: 80px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    /* Social icons */
+    .social-icons-fixed {
+        top: 32px;
+        right: 32px;
+        gap: 24px;
+        flex-direction: column;
+    }
+    
+    .social-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .social-icon-link:hover .social-icon {
+        transform: translateX(-4px);
+    }
+
+    /* Hero */
+    .hero {
+        padding: 0 40px;
+    }
+
+    .hero-title {
+        font-size: clamp(40px, 10vw, 70px);
+    }
+
+    .hero-description {
+        font-size: 16px;
+        margin-bottom: 36px;
+    }
+
+    .hero-buttons {
+        gap: 16px;
+    }
+
+    /* Projects */
+    .iphone-left, 
+    .iphone-right {
+        display: none;
+    }
+
+    .iphone-center {
+        transform: scale(0.45);
+    }
+
+    .iphones {
+        height: 500px;
+    }
+
+    .project-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Skills */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .education {
+        padding: 32px 24px;
+    }
+
+    /* Floating logos */
+    .floating-logo {
+        width: 40px;
+        height: 40px;
+        opacity: 0.15;
+    }
+    
+    .floating-logo:hover {
+        opacity: 0.4;
+    }
+
+    /* Contact */
+    .contact {
+        padding: 60px 40px;
+    }
+
+    .contact-split-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .contact-left {
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .contact-big-title {
+        font-size: 60px;
+    }
+
+    .form-inline {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    /* Social icons */
+    .social-icons-fixed {
+        top: 24px;
+        right: 24px;
+        gap: 20px;
+        flex-direction: column;
+    }
+    
+    .social-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 0 24px;
+    }
+
+    .hero-content {
+        margin-bottom: 70px;
+    }
+
+    .hero-title {
+        font-size: 42px;
+        margin-bottom: 20px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+        margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 13px;
+        flex: 1;
+        max-width: 160px;
+    }
+
+    .scroll-indicator {
+        bottom: 32px;
+    }
+
+    /* Projects */
+    .section-title {
+        font-size: 40px;
+    }
+
+    .project-name {
+        font-size: 28px;
+    }
+
+    .project-description {
+        font-size: 18px;
+    }
+
+    /* Floating logos */
+    .floating-logo {
+        display: none;
+    }
+
+    /* Contact */
+    .contact {
+        padding: 60px 24px;
+    }
+
+    .contact-big-title {
+        font-size: 46px;
+    }
+
+    .contact-email-link {
+        font-size: 16px;
+    }
+
+    .simple-contact-form input,
+    .simple-contact-form textarea {
+        padding: 16px 20px;
+        font-size: 15px;
+    }
+
+    .btn-send-contact {
+        padding: 17px 36px;
+        font-size: 14px;
+    }
+}
+
+/* Extra small */
+@media (max-width: 380px) {
+    .hero-content {
+        margin-bottom: 60px;
+    }
+
+    .hero-title {
+        font-size: 38px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 12px;
+        max-width: 140px;
+    }
+}

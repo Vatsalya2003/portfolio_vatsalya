@@ -1,0 +1,41 @@
+/* ===========================
+   CUSTOM CURSOR
+   =========================== */
+
+#cursor {
+    position: fixed;
+    width: 13px;
+    height: 13px;
+    background: rgba(255, 255, 255, 0.586);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    opacity: 0.7;
+    transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+#cursor.hover {
+    background: rgba(255, 255, 255, 0);
+}
+
+/* Text cursor modes */
+#cursor.text-mode {
+    width: 2px !important;
+    border-radius: 2px !important;
+    background: rgba(57, 126, 237, 0.8) !important;
+    opacity: 1 !important;
+}
+
+#cursor.text-large {
+    height: 70px !important;
+}
+
+#cursor.text-medium {
+    height: 40px !important;
+}
+
+#cursor.text-small {
+    height: 25px !important;
+}

@@ -1,0 +1,51 @@
+/* ===========================
+   FLOATING TECH LOGOS
+   =========================== */
+
+.floating-logo {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    opacity: 0.2;
+    z-index: 1;
+    pointer-events: all;
+    animation: float 6s ease-in-out infinite;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 0px transparent);
+}
+
+.floating-logo:hover {
+    opacity: 0.6;
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6))
+            drop-shadow(0 0 40px rgba(255, 255, 255, 0.3));
+}
+
+/* Individual colors */
+.floating-logo:nth-child(1):hover { filter: drop-shadow(0 0 20px rgba(255, 69, 58, 0.8)); }
+.floating-logo:nth-child(2):hover { filter: drop-shadow(0 0 20px rgba(255, 212, 59, 0.8)); }
+.floating-logo:nth-child(3):hover { filter: drop-shadow(0 0 20px rgba(97, 218, 251, 0.8)); }
+.floating-logo:nth-child(4):hover { filter: drop-shadow(0 0 20px rgba(104, 160, 99, 0.8)); }
+.floating-logo:nth-child(5):hover { filter: drop-shadow(0 0 20px rgba(242, 101, 34, 0.8)); }
+.floating-logo:nth-child(6):hover { filter: drop-shadow(0 0 20px rgba(247, 223, 30, 0.8)); }
+.floating-logo:nth-child(7):hover { filter: drop-shadow(0 0 20px rgba(33, 150, 243, 0.8)); }
+.floating-logo:nth-child(8):hover { filter: drop-shadow(0 0 20px rgba(240, 80, 50, 0.8)); }
+.floating-logo:nth-child(9):hover { filter: drop-shadow(0 0 20px rgba(255, 153, 0, 0.8)); }
+
+/* Animation delays */
+.floating-logo:nth-child(1) { animation-delay: 0s; animation-duration: 7s; }
+.floating-logo:nth-child(2) { animation-delay: 1s; animation-duration: 6s; }
+.floating-logo:nth-child(3) { animation-delay: 2s; animation-duration: 8s; }
+.floating-logo:nth-child(4) { animation-delay: 0.5s; animation-duration: 7.5s; }
+.floating-logo:nth-child(5) { animation-delay: 1.5s; animation-duration: 6.5s; }
+.floating-logo:nth-child(6) { animation-delay: 2.5s; animation-duration: 8.5s; }
+.floating-logo:nth-child(7) { animation-delay: 3s; animation-duration: 7s; }
+.floating-logo:nth-child(8) { animation-delay: 3.5s; animation-duration: 6s; }
+.floating-logo:nth-child(9) { animation-delay: 4s; animation-duration: 7.5s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(5deg); }
+    50% { transform: translateY(-10px) rotate(-5deg); }
+    75% { transform: translateY(-15px) rotate(3deg); }
+}

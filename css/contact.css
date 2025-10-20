@@ -1,0 +1,358 @@
+/* ===========================
+   RESET & BASE
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none !important;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Courier New', monospace;
+    overflow: hidden;
+    background: #000;
+    color: #fff;
+    height: 100vh;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Subtle vertical grid lines (background aesthetic) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+    );
+    background-size: 120px 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ===========================
+   CUSTOM CURSOR
+   =========================== */
+#cursor {
+    position: fixed;
+    width: 13px;
+    height: 13px;
+    background: rgba(255, 255, 255, 0.586);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    opacity: 0.7;
+    transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+#cursor.hover {
+    background: rgba(255, 255, 255, 0);
+}
+
+/* ===========================
+   CONTACT PAGE
+   =========================== */
+.contact-page {
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    padding: 80px;
+    overflow-y: auto;
+}
+
+.contact-container {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+}
+
+/* ===========================
+   CONTACT FORM
+   =========================== */
+.contact-form-wrapper {
+    width: 100%;
+}
+
+.contact-form {
+    position: relative;
+}
+
+.message-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: clamp(20px, 3vw, 32px);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', sans-serif;
+    resize: none;
+    padding: 0;
+    line-height: 1.6;
+    min-height: 60vh;
+}
+
+.message-input::placeholder {
+    color: #666;
+}
+
+.message-input:focus::placeholder {
+    opacity: 0.3;
+}
+
+/* ===========================
+   BUTTONS - FILL FROM CURSOR POSITION
+   =========================== */
+
+.button-group {
+    position: fixed;
+    bottom: 60px;
+    left: 80px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    z-index: 100;
+}
+
+.btn-back,
+.btn-send {
+    position: relative;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #fff;
+    background: transparent;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-back {
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-send {
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease, opacity 0.3s ease;
+}
+
+.btn-send.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Fill effect from cursor */
+.btn-back::after,
+.btn-send::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.586);
+    left: var(--x, 50%);
+    top: var(--y, 50%);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+                height 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    z-index: 0;
+}
+
+.btn-back:hover::after,
+.btn-send:hover::after {
+    width: 400%;
+    height: 400%;
+}
+
+.btn-back:hover,
+.btn-send:hover {
+    transform: scale(1.02);
+    border-color: #00000000;
+}
+
+.btn-back span,
+.btn-send span {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.btn-back:hover span,
+.btn-send:hover span {
+    color: #000;
+}
+
+/* Button fill effect - SAME AS CURSOR COLOR */
+.btn-back::before,
+.btn-send::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.586); /* SAME AS CURSOR */
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 0;
+}
+
+.btn-back:hover::before,
+.btn-send:hover::before {
+    width: 200%;
+    height: 200%;
+}
+
+.btn-back:hover {
+    transform: scale(1.02);
+}
+
+.btn-send:hover {
+    transform: scale(1.02);
+}
+
+/* Text turns black on hover */
+.btn-back:hover span,
+.btn-send:hover span {
+    color: #000 !important;
+}
+
+.btn-back span,
+.btn-send span {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+} */
+
+/* ===========================
+   SUCCESS & ERROR MESSAGES
+   =========================== */
+.success-message,
+.error-message {
+    position: fixed;
+    bottom: 140px;
+    left: 80px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 99;
+}
+
+.success-message {
+    background: rgba(52, 199, 89, 0.2);
+    border: 2px solid #34C759;
+    color: #34C759;
+}
+
+.error-message {
+    background: rgba(255, 59, 48, 0.2);
+    border: 2px solid #FF3B30;
+    color: #FF3B30;
+}
+
+.success-message.show,
+.error-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 1024px) {
+    .contact-page {
+        padding: 60px;
+    }
+
+    .button-group {
+        left: 60px;
+        bottom: 60px;
+    }
+
+    .success-message,
+    .error-message {
+        left: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-page {
+        padding: 40px;
+    }
+
+    .message-input {
+        font-size: 20px;
+        min-height: 50vh;
+    }
+
+    .button-group {
+        left: 40px;
+        bottom: 40px;
+        gap: 16px;
+    }
+
+    .btn-back,
+    .btn-send {
+        padding: 14px 28px;
+        font-size: 15px;
+    }
+
+    .success-message,
+    .error-message {
+        left: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-page {
+        padding: 24px;
+    }
+
+    .message-input {
+        font-size: 18px;
+        min-height: 60vh;
+    }
+
+    .button-group {
+        left: 24px;
+        bottom: 24px;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .btn-back,
+    .btn-send {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .success-message,
+    .error-message {
+        left: 24px;
+        bottom: 100px;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,219 @@
+/* ===========================
+   HERO SECTION
+   =========================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    padding: 0 400px;
+}
+
+.hero-content {
+    max-width: 900px;
+    text-align: left;
+}
+
+.hero-text {
+    margin-bottom: 32px;
+}
+
+.hero-title {
+    font-size: clamp(30px, 4vw, 700px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text-color);
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: -apple-system, BlinkMacSystemFont;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.hero-title .line {
+    display: block;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.hero-title .line::before,
+.hero-title .line::after,
+.hero-title::before,
+.hero-title::after {
+    display: none !important;
+}
+
+.greeting {
+    transition: opacity 0.5s ease;
+}
+
+.hero-description {
+    font-size: clamp(16px, 1.8vw, 20px);
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 700px;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: -apple-system, BlinkMacSystemFont;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease 0.4s backwards;
+    justify-content: flex-start;
+}
+
+/* Keep hero white in white mode */
+:root.white-mode .hero-title {
+    color: #fff !important;
+}
+
+:root.white-mode .hero-description {
+    color: #ffffff;
+}
+
+:root.white-mode .btn-primary,
+:root.white-mode .btn-outline {
+    border-color: #fff !important;
+    color: #fff !important;
+}
+
+/* Buttons */
+.btn {
+    position: relative;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    overflow: hidden;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    text-decoration: none;
+    color: var(--border-color);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn:hover {
+    transform: scale(1.02);
+    border-color: #00000000;
+}
+
+.btn-fill {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.586);
+    left: var(--x, 50%);
+    top: var(--y, 50%);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+                height 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.btn:hover .btn-fill {
+    width: 400%;
+    height: 400%;
+}
+
+.btn span {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.btn:hover span {
+    color: #000;
+}
+
+a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    width: 24px;
+    height: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+    animation: fadeIn 1s ease 1s backwards;
+    transition: border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--border-color);
+    border-radius: 50%;
+    animation: scrollBounce 1.5s ease infinite;
+    transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root.white-mode .scroll-indicator {
+    border-color: #fff !important;
+}
+
+:root.white-mode .scroll-dot {
+    background: #fff !important;
+}
+
+/* Social icons fixed */
+.social-icons-fixed {
+    position: fixed;
+    top: 48px;
+    right: 48px;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    z-index: 1000;
+}
+
+.social-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s ease;
+}
+
+:root.white-mode .social-icon {
+    filter: brightness(0) invert(0);
+}
+
+.social-icon-link:hover .social-icon {
+    transform: translateY(-4px);
+    opacity: 0.7;
+}

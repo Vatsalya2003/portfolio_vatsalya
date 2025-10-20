@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Page</title>
+  <link rel="stylesheet" href="css/contact.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
+
+  <!-- Contact Page -->
+  <section class="contact-page">
+    <div class="contact-container">
+      <div class="contact-form-wrapper">
+        <form id="contactForm" class="contact-form">
+          <textarea
+            id="messageInput"
+            class="message-input"
+            placeholder="Type your message..."
+          ></textarea>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fixed Buttons -->
+  <div class="button-group">
+    <a href="index.html" class="btn-back" data-hover>
+      <span>← go back</span>
+    </a>
+    <button id="btnSend" class="btn-send" type="submit" form="contactForm" data-hover>
+      <span>send →</span>
+    </button>
+  </div>
+
+  <!-- Success & Error Messages -->
+  <div id="successMessage" class="success-message">Message sent successfully!</div>
+  <div id="errorMessage" class="error-message">Something went wrong. Try again.</div>
+
+  <!-- JS -->
+  <script src="js/contact.js"></script>
+</body>
+</html>
