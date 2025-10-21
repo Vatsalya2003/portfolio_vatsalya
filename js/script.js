@@ -136,14 +136,37 @@ setTimeout(() => {
 // WEBSITE COLOR CHANGE
 // ===========================
 
+// const projects = document.getElementById('projects');
+// const root = document.documentElement;
+
+// window.addEventListener('scroll', () => {
+//     const projectsRect = projects.getBoundingClientRect();
+//     const windowHeight = window.innerHeight;
+    
+//     if (projectsRect.top < windowHeight * 0.5) {
+//         root.classList.add('white-mode');
+//     } else {
+//         root.classList.remove('white-mode');
+//     }
+// });
+// // ===========================
+// // WEBSITE COLOR CHANGE - PROJECTS & SKILLS
+// // ===========================
+
 const projects = document.getElementById('projects');
+const skills = document.getElementById('skills');
+const contact = document.getElementById('contact');
 const root = document.documentElement;
 
 window.addEventListener('scroll', () => {
     const projectsRect = projects.getBoundingClientRect();
+    const skillsRect = skills.getBoundingClientRect();
+    const contactRect = contact.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     
-    if (projectsRect.top < windowHeight * 0.5) {
+    // Turn white when projects OR skills section is in view
+    if (projectsRect.top < windowHeight * 0.5 || 
+        (skillsRect.top < windowHeight * 0.5 && contactRect.top > windowHeight * 0.2)) {
         root.classList.add('white-mode');
     } else {
         root.classList.remove('white-mode');
@@ -331,31 +354,5 @@ navLinks.forEach(link => {
         }
     });
 });
-// ===========================
-// BENTO CARD FILL FROM CURSOR (Desktop Only)
-// ===========================
 
-const bentoCards = document.querySelectorAll('.bento-card');
 
-// Only add cursor tracking on desktop
-if (window.innerWidth > 768) {
-    bentoCards.forEach(card => {
-        card.addEventListener('mouseenter', function(e) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            card.style.setProperty('--x', x + 'px');
-            card.style.setProperty('--y', y + 'px');
-        });
-        
-        card.addEventListener('mousemove', function(e) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            card.style.setProperty('--x', x + 'px');
-            card.style.setProperty('--y', y + 'px');
-        });
-    });
-}

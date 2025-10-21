@@ -71,7 +71,7 @@
     justify-content: flex-start;
 }
 
-/* Keep hero white in white mode */
+/* Keep hero text white in white mode */
 :root.white-mode .hero-title {
     color: #fff !important;
 }
@@ -86,7 +86,10 @@
     color: #fff !important;
 }
 
-/* Buttons */
+/* ===========================
+   BUTTONS - FILL FROM CURSOR POSITION
+   =========================== */
+
 .btn {
     position: relative;
     padding: 16px 32px;
@@ -96,7 +99,7 @@
     overflow: hidden;
     background: transparent;
     border: 1px solid var(--border-color);
-    text-decoration: none;
+    text-decoration: none; 
     color: var(--border-color);
     transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
                 border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -109,6 +112,11 @@
 .btn:hover {
     transform: scale(1.02);
     border-color: #00000000;
+}
+
+.btn-large {
+    font-size: 18px;
+    padding: 20px 40px;
 }
 
 .btn-fill {
@@ -144,16 +152,22 @@
     color: #000;
 }
 
+/* Link buttons */
 a.btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Scroll indicator */
+/* ===========================
+   SCROLL INDICATOR
+   =========================== */
+
 .scroll-indicator {
     position: absolute;
     bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 24px;
     height: 40px;
     border: 1px solid var(--border-color);
@@ -163,6 +177,7 @@ a.btn {
     padding-top: 8px;
     animation: fadeIn 1s ease 1s backwards;
     transition: border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
 }
 
 .scroll-dot {
@@ -182,38 +197,131 @@ a.btn {
     background: #fff !important;
 }
 
-/* Social icons fixed */
-.social-icons-fixed {
-    position: fixed;
-    top: 48px;
-    right: 48px;
-    display: flex;
-    flex-direction: row;
-    gap: 32px;
-    z-index: 1000;
+/* ===========================
+   ANIMATIONS
+   =========================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.social-icon-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.social-icon {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1);
-    transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.3s ease;
+@keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(12px); }
 }
 
-:root.white-mode .social-icon {
-    filter: brightness(0) invert(0);
+/* ===========================
+   RESPONSIVE - TABLET
+   =========================== */
+
+@media (max-width: 1024px) {
+    .hero {
+        padding: 0 60px;
+    }
 }
 
-.social-icon-link:hover .social-icon {
-    transform: translateY(-4px);
-    opacity: 0.7;
+/* ===========================
+   RESPONSIVE - MOBILE
+   =========================== */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 0 40px;
+    }
+
+    .hero-title {
+        font-size: clamp(40px, 10vw, 70px);
+    }
+
+    .hero-description {
+        font-size: 16px;
+        margin-bottom: 36px;
+    }
+
+    .hero-buttons {
+        gap: 16px;
+    }
+
+    /* Remove button fill animation on mobile */
+    .btn-fill {
+        transition: none !important;
+    }
+    
+    .btn:active .btn-fill {
+        width: 400% !important;
+        height: 400% !important;
+        transition: none !important;
+    }
+    
+    .btn:active span {
+        color: #000 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 0 24px;
+    }
+
+    .hero-content {
+        margin-bottom: 70px;
+    }
+
+    .hero-title {
+        font-size: 42px;
+        margin-bottom: 20px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+        margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 13px;
+        flex: 1;
+        max-width: 160px;
+    }
+
+    .scroll-indicator {
+        bottom: 32px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero-content {
+        margin-bottom: 60px;
+    }
+
+    .hero-title {
+        font-size: 38px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        font-size: 12px;
+        max-width: 140px;
+    }
 }

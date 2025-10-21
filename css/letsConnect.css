@@ -1,13 +1,15 @@
 /* ===========================
-   CONTACT SECTION
+   CONTACT SECTION - SPLIT DESIGN
    =========================== */
 
 .contact {
-    background: #c8d4dd;
-    min-height: 100vh;
+    background: #000;
+    min-height: 80vh; 
     display: flex;
     align-items: center;
-    padding: 80px 140px;
+    padding: 60px 140px;
+    border-radius: 60px 60px 0 0; 
+    margin-top: -60px; 
 }
 
 .contact-split-container {
@@ -20,36 +22,42 @@
     align-items: center;
 }
 
+/* ===========================
+   LEFT SIDE
+   =========================== */
+
 .contact-left {
     padding-right: 40px;
 }
 
 .contact-big-title {
-    font-size: clamp(50px, 7vw, 95px);
+    font-size: clamp(50px, 7vw, 90px);
     font-weight: 900;
-    color: #0a0a0a;
-    line-height: 0.92;
-    margin-bottom: 50px;
-    letter-spacing: -0.02em;
+    color: #ffffff;
+    line-height: 0.95;
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
 }
 
 .contact-email-link {
     font-size: clamp(16px, 2vw, 22px);
-    color: #0a0a0a;
+    color: rgba(255, 255, 255, 0.586);
     text-decoration: underline;
-    text-underline-offset: 8px;
+    text-underline-offset: 6px;
     text-decoration-thickness: 2px;
     font-weight: 500;
     transition: all 0.3s ease;
-    display: inline-block;
 }
 
 .contact-email-link:hover {
-    color: #5856d6;
-    text-decoration-color: #5856d6;
-    transform: translateX(5px);
+    color: rgba(255, 255, 255, 0.586);
+    text-decoration-color: #807ef0;
 }
+
+/* ===========================
+   RIGHT SIDE - FORM
+   =========================== */
 
 .contact-right {
     width: 100%;
@@ -58,18 +66,18 @@
 .simple-contact-form {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
 }
 
 .simple-contact-form input,
 .simple-contact-form textarea {
     width: 100%;
-    padding: 20px 26px;
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 14px;
-    font-size: 16px;
-    color: #1a1a1a;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+    font-size: 15px;
+    color: #fff;
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
     transition: all 0.3s ease;
     outline: none;
@@ -77,40 +85,43 @@
 
 .simple-contact-form input::placeholder,
 .simple-contact-form textarea::placeholder {
-    color: #999;
+    color: rgba(255, 255, 255, 0.6);
     font-weight: 400;
 }
 
+/* Focus effect */
 .simple-contact-form input:focus,
 .simple-contact-form textarea:focus {
-    background: rgba(255, 255, 255, 0.85);
-    border-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    border-bottom-color: #b5adfa;
+    box-shadow: none;
 }
 
+/* Make textarea resize vertically only */
+.simple-contact-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Inline form layout for Name + Email or Phone */
 .form-inline {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    gap: 16px;
 }
 
-.simple-contact-form textarea {
-    resize: vertical;
-    min-height: 90px;
-}
-
+/* Send Button - Same as Hero Buttons */
 .btn-send-contact {
     width: 100%;
-    padding: 19px 40px;
+    padding: 18px 40px;
     background: transparent;
-    border: 2px solid #5856d6;
+    border: 2px solid rgba(255, 255, 255, 0.586);
     border-radius: 50px;
-    color: #5856d6;
-    font-size: 15px;
+    color: rgba(255, 255, 255, 0.586);
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 2px;
     cursor: pointer;
-    margin-top: 12px;
+    margin-top: 8px;
     position: relative;
     overflow: hidden;
     transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -122,7 +133,7 @@
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: #5856d6;
+    background: rgba(255, 255, 255, 0.586);
     left: var(--x, 50%);
     top: var(--y, 50%);
     transform: translate(-50%, -50%);
@@ -138,10 +149,134 @@
 }
 
 .btn-send-contact:hover {
-    color: #fff;
+    color: rgba(255, 255, 255, 0.586);
     transform: scale(1.02);
 }
 
 .btn-send-contact:active {
     transform: scale(0.98);
+}
+
+.btn-send-contact span {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.btn-send-contact:hover span {
+    color: #000000; 
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+
+.footer {
+    background: #000;
+    padding: 40px 80px;
+    text-align: center;
+    border-top: 1px solid #222;
+}
+
+.footer p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.footer-location {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* ===========================
+   RESPONSIVE - TABLET
+   =========================== */
+
+@media (max-width: 1024px) {
+    .contact {
+        padding: 60px;
+    }
+
+    .contact-split-container {
+        gap: 60px;
+    }
+
+    .contact-big-title {
+        font-size: 70px;
+    }
+}
+
+/* ===========================
+   RESPONSIVE - MOBILE
+   =========================== */
+
+@media (max-width: 768px) {
+    .contact {
+        padding: 60px 40px;
+    }
+
+    .contact-split-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .contact-left {
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .contact-big-title {
+        font-size: 56px;
+    }
+
+    .form-inline {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact send button - mobile tap */
+    .btn-send-contact:active::before {
+        width: 400% !important;
+        height: 400% !important;
+        transition: none !important;
+    }
+    
+    .btn-send-contact:active span {
+        color: #000 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact {
+        padding: 60px 24px;
+    }
+
+    .contact-big-title {
+        font-size: 44px;
+    }
+
+    .contact-email-link {
+        font-size: 16px;
+    }
+
+    .simple-contact-form input,
+    .simple-contact-form textarea {
+        padding: 16px 20px;
+        font-size: 14px;
+    }
+
+    .btn-send-contact {
+        padding: 16px 32px;
+        font-size: 13px;
+    }
+
+    .footer {
+        padding: 30px 24px;
+    }
+    
+    .footer p {
+        font-size: 12px;
+    }
 }

@@ -2,6 +2,12 @@
    CUSTOM CURSOR
    =========================== */
 
+/* Hide default cursor */
+* {
+    cursor: none !important;
+}
+
+/* Custom cursor dot */
 #cursor {
     position: fixed;
     width: 13px;
@@ -16,11 +22,15 @@
     transform: translate(-50%, -50%);
 }
 
+/* Hover state - empty cursor */
 #cursor.hover {
     background: rgba(255, 255, 255, 0);
 }
 
-/* Text cursor modes */
+/* ===========================
+   TEXT CURSOR - SLIM LINE
+   =========================== */
+
 #cursor.text-mode {
     width: 2px !important;
     border-radius: 2px !important;
@@ -28,14 +38,31 @@
     opacity: 1 !important;
 }
 
+/* Different sizes for different text */
 #cursor.text-large {
-    height: 70px !important;
+    height: 70px !important; /* For large hero text */
 }
 
 #cursor.text-medium {
-    height: 40px !important;
+    height: 40px !important; /* For headings */
 }
 
 #cursor.text-small {
-    height: 25px !important;
+    height: 25px !important; /* For body text */
+}
+
+/* ===========================
+   RESPONSIVE - MOBILE
+   =========================== */
+
+@media (max-width: 768px) {
+    /* Hide custom cursor on mobile */
+    #cursor {
+        display: none !important;
+    }
+    
+    /* Show normal cursor on mobile */
+    * {
+        cursor: auto !important;
+    }
 }

@@ -1,0 +1,191 @@
+/* ===========================
+   VERTICAL RIGHT SIDE NAVIGATION
+   =========================== */
+
+.side-nav {
+    position: fixed;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    z-index: 1000;
+}
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    padding: 8px 0;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 0;
+    background: var(--text-color);
+    transition: height 0.3s ease;
+}
+
+.nav-link.active {
+    color: var(--text-color);
+}
+
+.nav-link.active::before {
+    height: 100%;
+}
+
+.nav-link:hover {
+    color: var(--text-color);
+}
+
+.nav-link:hover::before {
+    height: 50%;
+}
+
+/* White Mode Navigation */
+:root.white-mode .nav-link {
+    color: #666;
+}
+
+:root.white-mode .nav-link.active,
+:root.white-mode .nav-link:hover {
+    color: #000;
+}
+
+:root.white-mode .nav-link::before {
+    background: #000;
+}
+
+/* Contact Section Navigation Override */
+.contact ~ * .nav-link,
+body:has(.contact) .nav-link {
+    color: #999 !important;
+}
+
+body:has(#contact:target) .nav-link,
+.nav-link[data-section="contact"].active {
+    color: #999 !important;
+}
+
+body:has(#contact:target) .nav-link.active,
+body:has(#contact:target) .nav-link:hover {
+    color: #999 !important;
+}
+
+body:has(#contact:target) .nav-link::before {
+    background: #999 !important;
+    background: #fff;
+}
+
+/* ===========================
+   FIXED SOCIAL ICONS
+   =========================== */
+
+.social-icons-fixed {
+    position: fixed !important;
+    top: 48px !important;
+    left: 48px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 32px !important;
+    z-index: 1000 !important;
+}
+
+.social-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s ease;
+}
+
+:root.white-mode .social-icon {
+    filter: brightness(0) invert(0);
+}
+
+.social-icon-link:hover .social-icon {
+    transform: translateY(-4px);
+    opacity: 0.7;
+}
+
+/* ===========================
+   RESPONSIVE - TABLET
+   =========================== */
+
+@media (max-width: 1024px) {
+    .side-nav {
+        right: 24px;
+        gap: 28px;
+    }
+    
+    .nav-link {
+        font-size: 13px;
+    }
+}
+
+/* ===========================
+   RESPONSIVE - MOBILE
+   =========================== */
+
+@media (max-width: 768px) {
+    /* Hide vertical navigation on mobile */
+    .side-nav {
+        display: none;
+    }
+
+    /* Move social icons to top right on mobile */
+    .social-icons-fixed {
+        left: auto !important;
+        right: 32px !important;
+        top: 24px !important;
+        flex-direction: row !important;
+        gap: 24px !important;
+    }
+    
+    .social-icon {
+        width: 22px !important;
+        height: 22px !important;
+    }
+    
+    .social-icon-link:hover .social-icon {
+        transform: translateY(-4px) !important;
+    }
+    
+    .social-icon-link:hover .social-icon {
+        transform: translateX(-4px);
+    }
+}
+
+@media (max-width: 480px) {
+    .social-icons-fixed {
+        right: 24px !important;
+        top: 20px !important;
+        flex-direction: row !important; 
+        gap: 20px !important;
+    }
+    
+    .social-icon {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
