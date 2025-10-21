@@ -1,0 +1,169 @@
+/* ===========================
+   EDUCATION SECTION - APPLE STYLE
+   =========================== */
+
+.education-section {
+    padding: 20px 80px;
+    background: #0a0a0a; /* Slightly different from black */
+    transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root.white-mode .education-section {
+    background: #5159902c; /* Light gray for white mode */
+}
+
+.education {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.education h3 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 600;
+    margin-bottom: 48px;
+    color: var(--text-color);
+    text-align: center;
+    letter-spacing: -0.02em;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.education-item {
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 32px 0;
+    margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, 
+                transform 0.6s ease,
+                border-color 0.3s ease;
+}
+
+.education-item:last-child {
+    border-bottom: none;
+}
+
+.education-item:hover {
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.education-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.education-degree {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.education-school {
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    font-weight: 400;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.education-location {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    font-weight: 400;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.education-year {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    opacity: 0.7;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.education-coursework {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 12px;
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.8;
+    line-height: 1.5;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* White mode education */
+:root.white-mode .education-item {
+    border-bottom-color: rgba(130, 129, 129, 0.1);
+}
+
+:root.white-mode .education-item:hover {
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ===========================
+   RESPONSIVE - TABLET
+   =========================== */
+
+@media (max-width: 1024px) {
+    .education-section {
+        padding: 80px 60px;
+    }
+}
+
+/* ===========================
+   RESPONSIVE - MOBILE
+   =========================== */
+
+@media (max-width: 768px) {
+    .education-section {
+        padding: 60px 24px;
+    }
+
+    .education h3 {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+
+    .education-item {
+        padding: 30px 0;
+    }
+
+    .education-degree {
+        font-size: 20px;
+    }
+
+    .education-school {
+        font-size: 20px;
+    }
+
+    .education-location {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .education-section {
+        padding: 40px 16px;
+    }
+
+    .education h3 {
+        font-size: 28px;
+    }
+
+    .education-item {
+        padding: 20px 0;
+    }
+
+    .education-coursework {
+        font-size: 16px;
+    }
+}

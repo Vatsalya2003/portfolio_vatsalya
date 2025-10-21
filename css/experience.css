@@ -1,0 +1,458 @@
+/* ===========================
+   EXPERIENCE SECTION - TIMELINE STYLE
+   =========================== */
+
+.experience-section {
+    padding: 100px 80px;
+    background: #000000;
+    transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root.white-mode .experience-section {
+    background: #ffffff;
+}
+
+.experience-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.experience-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.experience-title {
+    font-size: clamp(48px, 7vw, 80px);
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-color);
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-subtitle {
+    font-size: 18px;
+    color: var(--text-muted);
+    font-weight: 400;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Timeline */
+.experience-timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
+/* Vertical line */
+.experience-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, 
+        rgba(102, 126, 234, 0.5) 0%, 
+        rgba(102, 126, 234, 0.2) 100%);
+}
+
+:root.white-mode .experience-timeline::before {
+    background: linear-gradient(180deg, 
+        rgba(0, 0, 0, 0.2) 0%, 
+        rgba(0, 0, 0, 0.1) 100%);
+}
+
+/* Experience Item */
+.experience-item {
+    position: relative;
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.experience-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.experience-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Timeline dot */
+.experience-item::before {
+    content: '';
+    position: absolute;
+    left: -46px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    background: var(--text-color);
+    border: 3px solid var(--bg-color);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover::before {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 6px rgba(102, 126, 234, 0.3);
+}
+
+:root.white-mode .experience-item::before {
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+:root.white-mode .experience-item:hover::before {
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Content Card */
+.experience-card {
+    background: rgba(102, 126, 234, 0.05);
+    padding: 32px;
+    padding-bottom: 70px; /* Extra space for link at bottom */
+    border-radius: 16px;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Fill effect from cursor */
+.experience-card::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.15);
+    left: var(--x, 50%);
+    top: var(--y, 50%);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+                height 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.experience-card:hover::before {
+    width: 200%;
+    height: 200%;
+}
+
+/* Keep content on top of fill */
+.experience-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.experience-card:hover {
+    border-color: rgba(102, 126, 234, 0.2);
+    transform: translateX(8px);
+}
+
+:root.white-mode .experience-card {
+    background: #f8f9fa;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+:root.white-mode .experience-card::before {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+:root.white-mode .experience-card:hover {
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* View Work Link - Simple Apple Style (Bottom Right) */
+.view-work-link {
+    position: absolute;
+    bottom: 24px;
+    right: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    text-decoration: none;
+    z-index: 2;
+}
+
+.view-work-link .link-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #000;
+    opacity: 0.5;
+}
+
+.view-work-link .link-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+}
+
+.view-work-link .lock-icon {
+    width: 11px;
+    height: 11px;
+    filter: brightness(0);
+}
+
+:root.white-mode .view-work-link .link-label,
+:root.white-mode .view-work-link .link-text {
+    color: #000;
+}
+
+:root.white-mode .view-work-link .lock-icon {
+    filter: brightness(0);
+}
+
+/* Header Row */
+.experience-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 16px;
+}
+
+.experience-role {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-color);
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-type {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+.experience-type.full-time {
+    background: rgba(52, 199, 89, 0.15);
+    color: #34C759;
+    border: 1px solid rgba(52, 199, 89, 0.3);
+}
+
+.experience-type.internship {
+    background: rgba(88, 86, 214, 0.15);
+    color: #5856D6;
+    border: 1px solid rgba(88, 86, 214, 0.3);
+}
+
+:root.white-mode .experience-type.full-time {
+    background: rgba(52, 199, 89, 0.1);
+    color: #28a745;
+}
+
+:root.white-mode .experience-type.internship {
+    background: rgba(88, 86, 214, 0.1);
+    color: #5856D6;
+}
+
+.experience-company {
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 4px;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.experience-location,
+.experience-duration {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.experience-location::before {
+    content: '📍';
+    font-size: 14px;
+}
+
+.experience-duration::before {
+    content: '📅';
+    font-size: 14px;
+}
+
+.experience-description {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.experience-highlights li {
+    color: var(--text-muted);
+    line-height: 1.7;
+    padding-left: 24px;
+    margin-bottom: 8px;
+    position: relative;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-highlights li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: rgba(102, 126, 234, 0.6);
+    font-weight: bold;
+}
+
+:root.white-mode .experience-highlights li::before {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.experience-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.experience-tag {
+    background: rgba(102, 126, 234, 0.1);
+    color: var(--text-color);
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+}
+
+.experience-tag:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: scale(1.05);
+}
+
+:root.white-mode .experience-tag {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root.white-mode .experience-tag:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* ===========================
+   RESPONSIVE - TABLET
+   =========================== */
+
+@media (max-width: 1024px) {
+    .experience-section {
+        padding: 80px 60px;
+    }
+}
+
+/* ===========================
+   RESPONSIVE - MOBILE
+   =========================== */
+
+@media (max-width: 768px) {
+    .experience-section {
+        padding: 60px 24px;
+    }
+
+    .experience-title {
+        font-size: 48px;
+    }
+
+    .experience-timeline {
+        padding-left: 30px;
+    }
+
+    .experience-item::before {
+        left: -36px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .experience-card {
+        padding: 24px;
+    }
+
+    .experience-header-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .experience-role {
+        font-size: 20px;
+    }
+
+    .experience-company {
+        font-size: 17px;
+    }
+
+    .experience-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .experience-section {
+        padding: 40px 16px;
+    }
+
+    .experience-title {
+        font-size: 36px;
+    }
+
+    .experience-timeline {
+        padding-left: 24px;
+    }
+
+    .experience-item {
+        margin-bottom: 40px;
+    }
+
+    .experience-item::before {
+        left: -30px;
+        width: 8px;
+        height: 8px;
+    }
+
+    .experience-card {
+        padding: 20px;
+    }
+
+    .experience-role {
+        font-size: 18px;
+    }
+
+    .experience-highlights li {
+        font-size: 14px;
+    }
+}

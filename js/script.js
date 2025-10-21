@@ -100,6 +100,125 @@ allButtons.forEach(button => {
         });
     }
 });
+
+// ===========================
+// BENTO CARD + SKILL TAG CASCADE FILL EFFECT
+// ===========================
+const bentoCards = document.querySelectorAll('.bento-card');
+
+bentoCards.forEach(card => {
+    const skillTags = card.querySelectorAll('.skill-tag');
+    let isHoveringTag = false;
+    
+    // Main card fill
+    card.addEventListener('mouseenter', function(e) {
+        if (!isHoveringTag) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--x', x + 'px');
+            card.style.setProperty('--y', y + 'px');
+        }
+    });
+    
+    card.addEventListener('mousemove', function(e) {
+        if (!isHoveringTag) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--x', x + 'px');
+            card.style.setProperty('--y', y + 'px');
+        }
+    });
+    
+    // Skill tag cascade effect
+    skillTags.forEach(tag => {
+        tag.addEventListener('mouseenter', function(e) {
+            isHoveringTag = true;
+            
+            // Force empty main card by adding a class
+            card.classList.add('tag-hover');
+            
+            // Add fill effect to skill tag
+            tag.style.position = 'relative';
+            tag.style.overflow = 'hidden';
+            
+            // Create fill element if it doesn't exist
+            let tagFill = tag.querySelector('.tag-fill');
+            if (!tagFill) {
+                tagFill = document.createElement('div');
+                tagFill.className = 'tag-fill';
+                tagFill.style.cssText = `
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.2);
+                    transform: translate(-50%, -50%);
+                    transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+                                height 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+                    z-index: 0;
+                    pointer-events: none;
+                `;
+                tag.appendChild(tagFill);
+            }
+            
+            // Set cursor position for tag
+            const rect = tag.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            tagFill.style.left = x + 'px';
+            tagFill.style.top = y + 'px';
+            tagFill.style.width = '300%';
+            tagFill.style.height = '300%';
+        });
+        
+        tag.addEventListener('mousemove', function(e) {
+            const tagFill = tag.querySelector('.tag-fill');
+            if (tagFill) {
+                const rect = tag.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                tagFill.style.left = x + 'px';
+                tagFill.style.top = y + 'px';
+            }
+        });
+        
+        tag.addEventListener('mouseleave', function(e) {
+            isHoveringTag = false;
+            
+            // Remove empty state from main card
+            card.classList.remove('tag-hover');
+            
+            // Empty skill tag (reset fill)
+            const tagFill = tag.querySelector('.tag-fill');
+            if (tagFill) {
+                tagFill.style.width = '0';
+                tagFill.style.height = '0';
+                
+                // Remove after animation
+                setTimeout(() => {
+                    if (tagFill && tagFill.parentNode) {
+                        tagFill.remove();
+                    }
+                }, 600);
+            }
+            
+            // Refill main card from current cursor position
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--x', x + 'px');
+            card.style.setProperty('--y', y + 'px');
+        });
+    });
+});
 // ===========================
 // ROTATING GREETING
 // ===========================
@@ -149,26 +268,35 @@ setTimeout(() => {
 //         root.classList.remove('white-mode');
 //     }
 // });
-// // ===========================
-// // WEBSITE COLOR CHANGE - PROJECTS & SKILLS
-// // ===========================
+// ===========================
+// WEBSITE COLOR CHANGE - PROJECTS, SKILLS, EXPERIENCE, CONTACT
+// ===========================
 
 const projects = document.getElementById('projects');
 const skills = document.getElementById('skills');
+const experience = document.getElementById('experience');
 const contact = document.getElementById('contact');
 const root = document.documentElement;
 
 window.addEventListener('scroll', () => {
     const projectsRect = projects.getBoundingClientRect();
-    const skillsRect = skills.getBoundingClientRect();
+    const skillsRect = skills ? skills.getBoundingClientRect() : null;
+    const experienceRect = experience ? experience.getBoundingClientRect() : null;
     const contactRect = contact.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     
-    // Turn white when projects OR skills section is in view
-    if (projectsRect.top < windowHeight * 0.5 || 
-        (skillsRect.top < windowHeight * 0.5 && contactRect.top > windowHeight * 0.2)) {
+    // Turn BLACK when contact section is in view
+    if (contactRect.top < windowHeight * 0.5) {
+        root.classList.remove('white-mode');
+    }
+    // Turn WHITE when projects, skills, or experience sections are in view
+    else if (projectsRect.top < windowHeight * 0.6 || 
+             (skillsRect && skillsRect.top < windowHeight * 0.6) ||
+             (experienceRect && experienceRect.top < windowHeight * 0.6)) {
         root.classList.add('white-mode');
-    } else {
+    } 
+    // Turn BLACK for hero section
+    else {
         root.classList.remove('white-mode');
     }
 });
@@ -195,44 +323,48 @@ const animateOnScroll = new IntersectionObserver((entries) => {
 document.querySelectorAll('[data-scroll]').forEach(el => {
     animateOnScroll.observe(el);
 });
-
-// // ===========================
-// // iPHONE PARALLAX SCROLL
-// // ===========================
+// ===========================
+// iPHONE PARALLAX SCROLL - DESKTOP ONLY
+// ===========================
 
 window.addEventListener('scroll', () => {
-    const allProjects = document.querySelectorAll('.project');
-    
-    allProjects.forEach(project => {
-        const rect = project.getBoundingClientRect();
-        const projectHeight = rect.height;
-        const windowHeight = window.innerHeight;
+    // Only run parallax on desktop (screens larger than 768px)
+    if (window.innerWidth > 768) {
+        const allProjects = document.querySelectorAll('.project');
         
-        const scrollPercent = (windowHeight - rect.top) / (windowHeight + projectHeight);
-        
-        if (scrollPercent > 0 && scrollPercent < 1) {
-            const leftPhone = project.querySelector('.iphone-left');
-            const centerPhone = project.querySelector('.iphone-center');
-            const rightPhone = project.querySelector('.iphone-right');
+        allProjects.forEach(project => {
+            const rect = project.getBoundingClientRect();
+            const projectHeight = rect.height;
+            const windowHeight = window.innerHeight;
             
-            if (leftPhone) {
-                const offset1 = (scrollPercent - 0.6) * 100;
-                leftPhone.style.transform = `scale(0.5) rotate(-3deg) translateY(${offset1}px)`;
-            }
+            const scrollPercent = (windowHeight - rect.top) / (windowHeight + projectHeight);
             
-            if (centerPhone) {
-                const offset2 = (scrollPercent - 0.5) * 50;
-                centerPhone.style.transform = `scale(0.55) translateY(${offset2}px)`;
+            if (scrollPercent > 0 && scrollPercent < 1) {
+                const leftPhone = project.querySelector('.iphone-left');
+                const centerPhone = project.querySelector('.iphone-center');
+                const rightPhone = project.querySelector('.iphone-right');
+                
+                // More dramatic movement - increased multipliers
+                if (leftPhone) {
+                    const offset1 = (scrollPercent - 0.5) * 600;
+                    const rotation = (scrollPercent - 0.5) * -10;
+                    leftPhone.style.transform = `scale(0.5) rotate(${rotation}deg) translateY(${offset1}px) translateX(${-offset1 * 0.3}px)`;
+                }
+                
+                if (centerPhone) {
+                    const offset2 = (scrollPercent - 0.5) * 600;
+                    centerPhone.style.transform = `scale(0.55) translateY(${offset2}px)`;
+                }
+                
+                if (rightPhone) {
+                    const offset3 = (scrollPercent - 0.5) * 600;
+                    const rotation = (scrollPercent - 0.5) * 10;
+                    rightPhone.style.transform = `scale(0.5) rotate(${rotation}deg) translateY(${offset3}px) translateX(${offset3 * 0.3}px)`;
+                }
             }
-            
-            if (rightPhone) {
-                const offset3 = (scrollPercent - 0.5) * 100;
-                rightPhone.style.transform = `scale(0.5) rotate(3deg) translateY(${offset3}px)`;
-            }
-        }
-    });
+        });
+    }
 });
-
 // ===========================
 // CONFETTI ANIMATION
 // ===========================
@@ -355,4 +487,27 @@ navLinks.forEach(link => {
     });
 });
 
+// ===========================
+// EXPERIENCE CARD FILL FOLLOWS CURSOR
+// ===========================
+const experienceCards = document.querySelectorAll('.experience-card');
 
+experienceCards.forEach(card => {
+    card.addEventListener('mouseenter', function(e) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--x', x + 'px');
+        card.style.setProperty('--y', y + 'px');
+    });
+    
+    card.addEventListener('mousemove', function(e) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--x', x + 'px');
+        card.style.setProperty('--y', y + 'px');
+    });
+});

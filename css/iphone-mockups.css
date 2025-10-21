@@ -194,6 +194,22 @@
     justify-content: center;
     gap: 40px;
     padding: 60px 0;
+    opacity: 1;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+/* Hide iPhones in black mode (when not in white-mode) */
+:root:not(.white-mode) .iphones {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Show iPhones in white mode */
+:root.white-mode .iphones {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
 }
 
 .iphone-wrapper {
@@ -247,27 +263,15 @@
    =========================== */
 
 @media (max-width: 768px) {
+    /* Hide iPhones completely on mobile */
     .iphones {
-        height: 500px;
-        gap: 20px;
-    }
-
-    .iphone-left,
-    .iphone-right {
         display: none;
-    }
-
-    .iphone-center {
-        transform: scale(0.45);
     }
 }
 
 @media (max-width: 480px) {
+    /* Hide iPhones completely on small mobile */
     .iphones {
-        height: 400px;
-    }
-
-    .iphone-center {
-        transform: scale(0.4);
+        display: none;
     }
 }

@@ -4,12 +4,12 @@
 
 .skills {
     padding: 100px 80px;
-    background: #1a0f2e;
+    background: #000000;
     transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 :root.white-mode .skills {
-    background: #f5f0ff;
+    background: #ececec;
 }
 
 /* Skills Header - Right Aligned */
@@ -47,7 +47,7 @@
 
 /* Bento Card with Fill Effect */
 .bento-card {
-    background: var(--card-bg);
+    background: rgba(73, 92, 174, 0.74);
     padding: 40px;
     border-radius: 28px;
     box-shadow: 0 4px 20px var(--card-shadow);
@@ -65,6 +65,7 @@
 
 .bento-card.visible {
     opacity: 1;
+    background: rgba(116, 123, 155, 0.197);
     transform: translateY(0);
 }
 
@@ -75,7 +76,7 @@
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(102, 126, 234, 0.12);
+    background: rgba(116, 123, 155, 0.399);
     left: var(--x, 50%);
     top: var(--y, 50%);
     transform: translate(-50%, -50%);
@@ -103,16 +104,12 @@
 }
 
 :root.white-mode .bento-card {
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(110, 117, 149, 0.359);
+    border: 1px solid rgba(0, 0, 0, 0);
 }
 
 :root.white-mode .bento-card::before {
-    background: rgba(0, 0, 0, 0.03);
-}
-
-:root.white-mode .bento-card:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background: rgba(93, 101, 141, 0.507);
 }
 
 /* Card Visual Area */
@@ -137,7 +134,7 @@
 /* Abstract Shapes for Frontend */
 .abstract-shape {
     position: absolute;
-    border: 3px solid rgba(102, 126, 234, 0.3);
+    border: 3px solid rgba(102, 126, 234, 0.455);
     border-radius: 16px;
     transition: all 0.3s ease;
 }
@@ -154,26 +151,27 @@
     height: 60px;
     top: 30%;
     right: 30%;
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(0, 0, 0, 0.081);
 }
 
 .bento-card:hover .abstract-shape {
     transform: rotate(15deg);
+    border-color: rgba(255, 255, 255, 0.869);
 }
 
 :root.white-mode .abstract-shape {
-    border-color: rgba(0, 0, 0, 0.15);
+    border-color: rgba(0, 0, 0, 0.224);
 }
 
 :root.white-mode .shape-2 {
-    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.224);
 }
 
 /* Mobile Frame for Mobile Dev */
 .mobile-frame {
     width: 70px;
     height: 120px;
-    border: 3px solid rgba(102, 126, 234, 0.3);
+    border: 3px solid #fff;
     border-radius: 16px;
     position: relative;
 }
@@ -186,7 +184,7 @@
     transform: translateX(-50%);
     width: 30px;
     height: 4px;
-    background: rgba(102, 126, 234, 0.2);
+    background: rgba(0, 0, 0, 0.224);
     border-radius: 2px;
 }
 
@@ -196,22 +194,22 @@
     right: -10px;
     width: 24px;
     height: 24px;
-    background: #FF3B30;
+    background: #f9544bed;
     border-radius: 50%;
     border: 3px solid var(--card-bg);
     z-index: 2;
 }
 
 :root.white-mode .mobile-frame {
-    border-color: rgba(0, 0, 0, 0.15);
+    border-color: rgba(0, 0, 0, 0.224);
 }
 
 :root.white-mode .mobile-frame::before {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.224);
 }
 
 :root.white-mode .mobile-notif {
-    border-color: #fff;
+    border-color: #ffffff00;
 }
 
 /* Backend Lines */
@@ -241,7 +239,7 @@
 
 :root.white-mode .backend-lines::before,
 :root.white-mode .backend-lines::after {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.224);
 }
 
 /* Card Content */
@@ -269,84 +267,140 @@
 }
 
 .skill-tag {
-    background: rgba(102, 126, 234, 0.08);
+    background: rgba(73, 91, 174, 0.474);
     color: var(--text-color);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 13px;
     font-weight: 500;
-    border: 1px solid rgba(102, 126, 234, 0.15);
+    border: 1px solid rgba(73, 91, 174, 0.474);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.skill-tag > * {
+    position: relative;
+    z-index: 1;
 }
 
 .skill-tag:hover {
-    background: rgba(102, 126, 234, 0.15);
-    border-color: rgba(102, 126, 234, 0.3);
+    background: rgba(102, 126, 234, 0.552);
+    border-color: rgba(0, 0, 0, 0.224);
     transform: scale(1.05);
 }
 
 :root.white-mode .skill-tag {
-    background: rgba(0, 0, 0, 0.04);
-    border-color: rgba(0, 0, 0, 0.08);
+    background: #ececec;
+    border-color: rgba(0, 0, 0, 0.267);
 }
 
 :root.white-mode .skill-tag:hover {
-    background: rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 0, 0, 0.15);
+    background: rgba(93, 101, 141, 0.597);
+    border-color: rgba(0, 0, 0, 0);
+    color: #fff;
 }
 
-/* Education Section */
+/* ===========================
+   EDUCATION SECTION - APPLE STYLE
+   =========================== */
+
 .education {
-    background: var(--card-bg);
-    padding: 48px;
-    border-radius: 24px;
-    box-shadow: 0 2px 8px var(--card-shadow);
-    transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .education h3 {
-    font-size: 32px;
+    font-size: clamp(32px, 5vw, 48px);
     font-weight: 600;
-    margin-bottom: 32px;
+    margin-bottom: 48px;
     color: var(--text-color);
+    text-align: center;
+    letter-spacing: -0.02em;
     transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .education-item {
-    border-left: 4px solid var(--border-color);
-    padding-left: 24px;
-    margin-bottom: 24px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 32px 0;
+    margin-bottom: 0;
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateY(20px);
     transition: opacity 0.6s ease, 
                 transform 0.6s ease,
-                border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+                border-color 0.3s ease;
+}
+
+.education-item:last-child {
+    border-bottom: none;
+}
+
+.education-item:hover {
+    border-bottom-color: rgba(255, 255, 255, 0.3);
 }
 
 .education-item.visible {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
 }
 
 .education-degree {
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     color: var(--text-color);
+    letter-spacing: -0.01em;
     transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .education-school {
+    font-size: 17px;
     color: var(--text-muted);
     margin-bottom: 4px;
+    font-weight: 400;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.education-location {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    font-weight: 400;
     transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .education-year {
     font-size: 14px;
     color: var(--text-secondary);
+    font-weight: 400;
+    opacity: 0.7;
     transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.education-coursework {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 12px;
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.8;
+    line-height: 1.5;
+    transition: color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* White mode education */
+:root.white-mode .education-item {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+:root.white-mode .education-item:hover {
+    border-bottom-color: rgba(0, 0, 0, 0.2);
 }
 
 /* ===========================
@@ -374,25 +428,25 @@
     }
 
     .skills-header {
-        padding: 0 40px;
+        padding: 0 24px;
         margin-bottom: 40px;
+        text-align: left;
     }
 
     .section-title-left {
-        font-size: 48px;
+        font-size: 42px;
     }
 
     /* Horizontal scroll container */
     .bento-grid {
         display: flex;
-        flex-direction: row;
         gap: 16px;
         overflow-x: auto;
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        padding: 0 40px 20px;
-        margin-bottom: 60px;
+        padding: 0 20px 20px;
+        margin-bottom: 40px;
     }
 
     /* Hide scrollbar */
@@ -400,26 +454,23 @@
         display: none;
     }
 
-    .bento-grid {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-
-    /* Each card */
+    /* Each card fits perfectly on screen */
     .bento-card {
         min-width: 85%;
         flex-shrink: 0;
         scroll-snap-align: center;
+        padding: 28px;
+        border-radius: 22px;
         min-height: auto;
-        padding: 32px;
+        max-height: none;
     }
 
-    /* Remove fill effect on mobile */
+    /* Disable fill hover for mobile */
     .bento-card::before {
         display: none !important;
     }
 
-    /* Simple touch feedback */
+    /* Touch feedback */
     .bento-card:active {
         transform: scale(0.98);
         box-shadow: 0 2px 10px var(--card-shadow);
@@ -427,38 +478,6 @@
 
     .bento-card:hover {
         transform: none;
-        box-shadow: 0 4px 20px var(--card-shadow);
-    }
-
-    .card-visual {
-        height: 140px;
-    }
-
-    .education {
-        padding: 32px 24px;
-    }
-}
-
-@media (max-width: 480px) {
-    .skills {
-        padding: 60px 0;
-    }
-
-    .skills-header {
-        padding: 0 24px;
-    }
-
-    .section-title-left {
-        font-size: 42px;
-    }
-
-    .bento-grid {
-        padding: 0 24px 20px;
-    }
-
-    .bento-card {
-        min-width: 90%;
-        padding: 24px;
     }
 
     .card-visual {
@@ -466,7 +485,7 @@
     }
 
     .bento-card-title {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .bento-card-desc {
@@ -475,42 +494,97 @@
 
     .skill-tag {
         font-size: 12px;
-        padding: 5px 12px;
+        padding: 5px 10px;
+    }
+
+    /* Education mobile */
+    .education {
+        padding: 0 24px;
+    }
+
+    .education h3 {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
+
+    .education-item {
+        padding: 24px 0;
+    }
+
+    .education-degree {
+        font-size: 18px;
+    }
+
+    .education-school {
+        font-size: 16px;
+    }
+
+    .education-location {
+        font-size: 14px;
     }
 }
 
-/* Scroll indicator dots */
-.scroll-dots {
-    display: none;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 20px;
-}
-
-.dot {
-    width: 8px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.dot.active {
-    background: rgba(255, 255, 255, 0.8);
-    width: 24px;
-    border-radius: 4px;
-}
-
-:root.white-mode .dot {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-:root.white-mode .dot.active {
-    background: rgba(0, 0, 0, 0.6);
-}
-
-@media (max-width: 768px) {
-    .scroll-dots {
-        display: flex;
+/* ===========================
+   SMALL SCREENS (Phones)
+   =========================== */
+@media (max-width: 480px) {
+    .skills {
+        padding: 40px 0;
     }
+
+    .skills-header {
+        padding: 0 16px;
+        margin-bottom: 32px;
+    }
+
+    .section-title-left {
+        font-size: 36px;
+    }
+
+    .bento-grid {
+        padding: 0 16px 20px;
+    }
+
+    .bento-card {
+        min-width: 90%;
+        padding: 24px;
+        border-radius: 18px;
+    }
+
+    .bento-card-title {
+        font-size: 17px;
+    }
+
+    .bento-card-desc {
+        font-size: 13px;
+    }
+
+    .skill-tag {
+        font-size: 11px;
+        padding: 4px 9px;
+    }
+
+    /* Education small mobile */
+    .education {
+        padding: 0 16px;
+    }
+
+    .education h3 {
+        font-size: px;
+    }
+
+    .education-item {
+        padding: 20px 0;
+    }
+
+    .education-coursework {
+        font-size: 13px;
+    }
+}
+
+/* Empty main card when hovering skill tag */
+.bento-card.tag-hover::before {
+    width: 0 !important;
+    height: 0 !important;
+    transition: width 0.3s ease, height 0.3s ease;
 }
