@@ -330,7 +330,7 @@
     </div>
     </section>
 
-<!-- Featured Work Section -->
+<!-- Featugit d Work Section -->
 <section class="featured-work-section" id="featuredWork">
     <div class="container">
         <h4 class="section-title">Featured Work</h4>
@@ -535,19 +535,28 @@
 
         <!-- Right Side - Form -->
         <div class="contact-right">
-            <form class="simple-contact-form" id="contactFormMain">
-                <input type="text" name="name" placeholder="Full Name*" required>
-                
-                <div class="form-inline">
-                    <input type="email" name="email" placeholder="Email*" required>
-                    <input type="tel" name="phone" placeholder="Phone">
-                </div>
+            <form class="simple-contact-form" id="contactFormMain" action="https://api.web3forms.com/submit" method="POST">
+    
+    <!-- Hidden Fields for Web3Forms -->
+    <input type="hidden" name="access_key" value="413b95fe-43fd-49f5-a5e0-c28bfbb739fc">
+    <!-- Dynamic Subject - Shows sender's name -->
+    <input type="hidden" name="subject" value="💼 New Portfolio Message from {name}">
+    
+    <!-- Redirect to your website -->
+    <input type="hidden" name="redirect" value="https://vatsalya2003.github.io/portfolio_vatsalya/">
+    
+    <input type="text" name="name" placeholder="Full Name*" required>
+    
+    <div class="form-inline">
+        <input type="email" name="email" placeholder="Email*" required>
+        <input type="tel" name="phone" placeholder="Phone">
+    </div>
 
-                <textarea name="message" placeholder="Message*" rows="3" required></textarea>
-                <button type="submit" class="btn-send-contact">    
-                    <span>Send</span>
-                </button>
-            </form>
+    <textarea name="message" placeholder="Message*" rows="3" required></textarea>
+    
+    <button type="submit" class="btn-send-contact">    
+        <span>Send</span>
+    </button>
         </div>
     </div>
     </section>

@@ -511,3 +511,31 @@ experienceCards.forEach(card => {
         card.style.setProperty('--y', y + 'px');
     });
 });
+
+// ===========================
+// WEB3FORMS SUCCESS HANDLING
+// ===========================
+
+const contactForm = document.getElementById('contactFormMain');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        // Let form submit naturally to Web3Forms
+        const sendBtn = contactForm.querySelector('.btn-send-contact span');
+        sendBtn.textContent = 'Sending...';
+    });
+}
+
+// Check for success redirect
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+        // Show confetti (you already have this function)
+        setTimeout(() => {
+            createConfetti();
+        }, 300);
+        
+        // Clean URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+});
