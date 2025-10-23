@@ -322,7 +322,7 @@
 }
 
 .experience-highlights li::before {
-    content: '→';
+    content: '•';
     position: absolute;
     left: 0;
     color: rgba(102, 126, 234, 0.6);
