@@ -9,7 +9,7 @@
 }
 
 :root.white-mode .education-section {
-    background: #5159902c; /* Light gray for white mode */
+    background: #717cc12c; /* Light gray for white mode */
 }
 
 .education {
@@ -33,7 +33,7 @@
 
 .education-item {
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(130, 16, 16, 0.825);
     padding: 32px 0;
     margin-bottom: 0;
     opacity: 0;
@@ -48,7 +48,7 @@
 }
 
 .education-item:hover {
-    border-bottom-color: rgba(255, 255, 255, 0.3);
+    border-bottom-color: rgba(255, 53, 53, 0.919);
 }
 
 .education-item.visible {
@@ -102,7 +102,18 @@
 
 /* White mode education */
 :root.white-mode .education-item {
-    border-bottom-color: rgba(130, 129, 129, 0.1);
+    border-bottom-color: rgba(77, 75, 75, 0.1);
+}
+
+:root.white-mode .education-coursework {
+    color: #0a0a0a;
+}
+
+:root.white-mode .education-year {
+    color: #0a0a0aa3;
+}
+:root.white-mode .education-degree {
+    color: #0a0a0add;
 }
 
 :root.white-mode .education-item:hover {
