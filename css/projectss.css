@@ -45,6 +45,7 @@
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.6s ease;
+    cursor: pointer;
 }
 
 .project-bento.visible {
@@ -52,9 +53,36 @@
     transform: translateY(0);
 }
 
+/* Fill effect from cursor - Same as skill cards */
+.project-bento::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.15);
+    left: var(--x, 50%);
+    top: var(--y, 50%);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+                height 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.project-bento:hover::before {
+    width: 200%;
+    height: 200%;
+}
+
+/* Keep content on top of fill */
+.project-bento > * {
+    position: relative;
+    z-index: 1;
+}
+
 .project-bento:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    background: rgba(26, 26, 26, 0.9);
+    border-color: rgba(119, 150, 213, 0.475);
 }
 
 :root.white-mode .project-bento {
@@ -62,9 +90,12 @@
     border-color: rgba(0, 0, 0, 0.08);
 }
 
+:root.white-mode .project-bento::before {
+    background: rgba(75, 104, 156, 0.301);
+}
+
 :root.white-mode .project-bento:hover {
-    background: #f0f1f3;
-    border-color: rgba(0, 0, 0, 0.12);
+    border-color: rgba(75, 104, 156, 0.301);
 }
 
 /* Project Header */
@@ -221,6 +252,14 @@
     font-weight: 500;
     border: 1px solid rgba(102, 126, 234, 0.2);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.project-tech-tag > * {
+    position: relative;
+    z-index: 1;
 }
 
 .project-tech-tag:hover {
@@ -235,6 +274,13 @@
 
 :root.white-mode .project-tech-tag:hover {
     background: rgba(0, 0, 0, 0.1);
+}
+
+/* Empty main card when hovering tag */
+.project-bento.tag-hover::before {
+    width: 0 !important;
+    height: 0 !important;
+    transition: width 0.3s ease, height 0.3s ease;
 }
 
 /* ===========================
@@ -321,30 +367,4 @@
     .project-features li {
         font-size: 15px;
     }
-}
-/* Simple Download Links */
-.simple-download-link {
-    display: inline-flex;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 500;
-    color: #000;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
-    transition: opacity 0.3s ease;
-}
-
-.simple-download-link:hover {
-    opacity: 0.7;
-}
-
-:root.white-mode .simple-download-link {
-    color: #000;
-}
-
-/* Make sure icons stay small */
-.simple-download-link img {
-    width: 14px !important;
-    height: 14px !important;
 }

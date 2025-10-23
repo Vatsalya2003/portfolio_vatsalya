@@ -59,7 +59,7 @@
             <span>Career Path</span>
         </a>
         <a href="#projects" class="nav-link" data-section="projects">
-            <span>projects</span>
+            <span>Projects</span>
         </a>
         <a href="#contact" class="nav-link" data-section="contact">
             <span>Let's Connect</span>
@@ -245,7 +245,7 @@
     <section class="experience-section" id="experience">
         <div class="experience-container">
             <div class="experience-header">
-                <h2 class="experience-title">Work Experience</h2>
+                <h2 class="experience-title">Career Path</h2>
                 <p class="experience-subtitle">Building innovative solutions and leading teams</p>
             </div>
 
@@ -439,11 +439,53 @@
                 <h2 class="section-title">PROJECTS</h2>
                 <p class="section-subtitle">Mobile applications and innovative solutions</p>
             </div>
-            <!-- Project 1: GTU Laurentian Connect -->
+
+            <!-- Project 4: WebSocket Chat System -->
             <div class="project-bento" data-scroll>
                 <div class="project-bento-header">
                     <div class="project-bento-left">
                         <div class="project-number">01</div>
+                        <div class="project-client-label">PROJECT</div>
+                        <div class="project-client-name">Distributed Chat System</div>
+                        <div class="project-meta">
+                            <span class="project-role">Backend & Distributed Systems</span>
+                            <span class="project-duration">Oct 2025</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/Vatsalya2003/ChatServer-and-Client-" target="_blank" class="live-project-btn">View on
+                        GitHub</a>
+                </div>
+
+                <p class="project-bento-description">
+                    Built a scalable distributed real-time chat system using Spring Boot WebSocket with message queue
+                    integration for reliable message delivery. Implemented load balancing across multiple server
+                    instances to handle thousands of concurrent users efficiently.
+                </p>
+
+                <ul class="project-features">
+                    <li>WebSocket server handling 1,000+ concurrent connections across multiple rooms</li>
+                    <li>AWS SQS integration for asynchronous message processing and distribution</li>
+                    <li>Load balancing with multiple server instances for high availability</li>
+                    <li>Multithreaded client simulating 50,000+ users for performance testing</li>
+                    <li>Comprehensive metrics tracking: throughput, latency (p50, p95, p99)</li>
+                </ul>
+
+                <div class="project-tech-tags">
+                    <span class="project-tech-tag">Spring Boot</span>
+                    <span class="project-tech-tag">WebSocket</span>
+                    <span class="project-tech-tag">Java</span>
+                    <span class="project-tech-tag">AWS EC2</span>
+                    <span class="project-tech-tag">AWS SQS</span>
+                    <span class="project-tech-tag">Load Balancing</span>
+                    <span class="project-tech-tag">Maven</span>
+                </div>
+            </div>
+
+            <!-- Project 2: GTU Laurentian Connect -->
+            <div class="project-bento" data-scroll>
+                <div class="project-bento-header">
+                    <div class="project-bento-left">
+                        <div class="project-number">02</div>
                         <div class="project-client-label">PROJECT</div>
                         <div class="project-client-name">GTU Laurentian Connect</div>
                         <div class="project-meta">
@@ -488,11 +530,11 @@
                 </div>
             </div>
 
-            <!-- Project 2: GemChat -->
+            <!-- Project 3: GemChat -->
             <div class="project-bento" data-scroll>
                 <div class="project-bento-header">
                     <div class="project-bento-left">
-                        <div class="project-number">02</div>
+                        <div class="project-number">03</div>
                         <div class="project-client-label">PROJECT</div>
                         <div class="project-client-name">GemChat</div>
                         <div class="project-meta">
@@ -500,7 +542,8 @@
                             <span class="project-duration">May 2024</span>
                         </div>
                     </div>
-                    <a href="#" class="live-project-btn">View Project</a>
+                    <a href="https://github.com/Vatsalya2003/GemChat" class="live-project-btn">View on
+                        GitHub</a>
                 </div>
 
                 <p class="project-bento-description">
@@ -524,11 +567,11 @@
                 </div>
             </div>
 
-            <!-- Project 3: Expenzy -->
+            <!-- Project 4: Expenzy -->
             <div class="project-bento" data-scroll>
                 <div class="project-bento-header">
                     <div class="project-bento-left">
-                        <div class="project-number">03</div>
+                        <div class="project-number">04</div>
                         <div class="project-client-label">PROJECT</div>
                         <div class="project-client-name">Expenzy</div>
                         <div class="project-meta">
@@ -536,7 +579,8 @@
                             <span class="project-duration">Jan 2024</span>
                         </div>
                     </div>
-                    <a href="#" class="live-project-btn">View Project</a>
+                    <a href="https://github.com/Vatsalya2003/Expenzy" class="live-project-btn">View on
+                        GitHub</a>
                 </div>
 
                 <p class="project-bento-description">
@@ -569,15 +613,13 @@
                 <a href="mailto:vatsalyadabhi05@gmail.com" class="contact-email-link">vatsalyadabhi05@gmail.com</a>
             </div>
 
-            <!-- Right Side - Form -->
-            <!-- <div class="contact-right">
-                <form class="simple-contact-form" id="contactFormMain" action="https://api.web3forms.com/submit"
-                    method="POST">
+            <div class="contact-right"> 
+                <form class="simple-contact-form" id="contactFormMain">
 
+                    <!-- Web3Forms Hidden Fields -->
                     <input type="hidden" name="access_key" value="413b95fe-43fd-49f5-a5e0-c28bfbb739fc">
-                    <input type="hidden" name="subject" value="💼 New Portfolio Message">
-                    <input type="hidden" name="redirect" value="https://vatsalya2003.github.io/portfolio_vatsalya/">
 
+                    <!-- Form Fields -->
                     <input type="text" name="name" placeholder="Full Name*" required>
 
                     <div class="form-inline">
@@ -591,29 +633,7 @@
                         <span>Send</span>
                     </button>
                 </form>
-            </div> -->
-            <!-- Right Side - Form -->
-<div class="contact-right">
-    <form class="simple-contact-form" id="contactFormMain">
-        
-        <!-- Web3Forms Hidden Fields -->
-        <input type="hidden" name="access_key" value="413b95fe-43fd-49f5-a5e0-c28bfbb739fc">
-        
-        <!-- Form Fields -->
-        <input type="text" name="name" placeholder="Full Name*" required>
-        
-        <div class="form-inline">
-            <input type="email" name="email" placeholder="Email*" required>
-            <input type="tel" name="phone" placeholder="Phone">
-        </div>
-
-        <textarea name="message" placeholder="Message*" rows="3" required></textarea>
-        
-        <button type="submit" class="btn-send-contact">
-            <span>Send</span>
-        </button>
-    </form>
-</div>
+            </div>
         </div>
     </section>
 
@@ -624,8 +644,6 @@
 
     <script src="js/script.js"></script>
     <script src="js/contact-form.js"></script>
-    <script src="js/successHandler.js"></script>
-
 
 </body>
 

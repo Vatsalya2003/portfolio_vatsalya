@@ -696,3 +696,117 @@ function showSpidermanSwing() {
 window.addEventListener('error', function(e) {
     console.error('❌ JavaScript Error:', e.message);
 });
+
+// ===========================
+// PROJECT CARD + TAG CASCADE FILL EFFECT
+// ===========================
+const projectCards = document.querySelectorAll('.project-bento');
+
+projectCards.forEach(card => {
+    const techTags = card.querySelectorAll('.project-tech-tag');
+    let isHoveringTag = false;
+    
+    // Main card fill
+    card.addEventListener('mouseenter', function(e) {
+        if (!isHoveringTag) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--x', x + 'px');
+            card.style.setProperty('--y', y + 'px');
+        }
+    });
+    
+    card.addEventListener('mousemove', function(e) {
+        if (!isHoveringTag) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--x', x + 'px');
+            card.style.setProperty('--y', y + 'px');
+        }
+    });
+    
+    // Tech tag cascade effect
+    techTags.forEach(tag => {
+        tag.addEventListener('mouseenter', function(e) {
+            isHoveringTag = true;
+            
+            // Empty main card
+            card.classList.add('tag-hover');
+            
+            // Create fill element for tag
+            let tagFill = tag.querySelector('.tag-fill');
+            if (!tagFill) {
+                tagFill = document.createElement('div');
+                tagFill.className = 'tag-fill';
+                tagFill.style.cssText = `
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.2);
+                    transform: translate(-50%, -50%);
+                    transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+                                height 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+                    z-index: 0;
+                    pointer-events: none;
+                `;
+                tag.appendChild(tagFill);
+            }
+            
+            // Set cursor position for tag
+            const rect = tag.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            tagFill.style.left = x + 'px';
+            tagFill.style.top = y + 'px';
+            tagFill.style.width = '300%';
+            tagFill.style.height = '300%';
+        });
+        
+        tag.addEventListener('mousemove', function(e) {
+            const tagFill = tag.querySelector('.tag-fill');
+            if (tagFill) {
+                const rect = tag.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                tagFill.style.left = x + 'px';
+                tagFill.style.top = y + 'px';
+            }
+        });
+        
+        tag.addEventListener('mouseleave', function(e) {
+            isHoveringTag = false;
+            
+            // Remove empty state from main card
+            card.classList.remove('tag-hover');
+            
+            // Empty tag
+            const tagFill = tag.querySelector('.tag-fill');
+            if (tagFill) {
+                tagFill.style.width = '0';
+                tagFill.style.height = '0';
+                
+                setTimeout(() => {
+                    if (tagFill && tagFill.parentNode) {
+                        tagFill.remove();
+                    }
+                }, 600);
+            }
+            
+            // Refill main card
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.style.setProperty('--x', x + 'px');
+            card.style.setProperty('--y', y + 'px');
+        });
+    });
+});

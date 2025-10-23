@@ -18,7 +18,7 @@
     width: 33.1rem;
     height: 25.8rem;
     position: absolute;
-    top: 35rem;
+    top: 27rem;
     animation: 3s swing ease-in-out;
     filter: drop-shadow(3rem 0 0.5rem rgba(0, 0, 0, 0.2));
 }
