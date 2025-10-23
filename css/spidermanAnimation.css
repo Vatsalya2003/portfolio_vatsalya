@@ -1,0 +1,480 @@
+/* ===========================
+   SPIDER-MAN SWINGING ANIMATION
+   =========================== */
+
+.spidey-animation-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99999;
+    overflow: hidden;
+    font-size: 10px;
+}
+
+.spidey-swing {
+    width: 33.1rem;
+    height: 25.8rem;
+    position: absolute;
+    top: 35rem;
+    animation: 3s swing ease-in-out;
+    filter: drop-shadow(3rem 0 0.5rem rgba(0, 0, 0, 0.2));
+}
+
+/* Swinging Animation */
+@keyframes swing {
+    0% {
+        left: -50%; 
+        transform: rotate(45deg) translateY(0rem);
+    }
+    50% {
+        left: 50%;
+        transform: rotate(0deg) translateY(18rem);
+    }
+    100% {
+        left: 150%;
+        transform: rotate(-45deg) translateY(0rem);
+    }
+}
+
+/* Web Line */
+.web-swing {
+    width: 0.3rem;
+    height: 80rem;
+    position: absolute;
+    background: #fff;
+    bottom: 5rem;
+    right: 7.5rem;
+    border: 1px solid #eee;
+}
+
+/* Spidey Sense */
+.spidey-sense-anim {
+    width: 1.2rem;
+    position: absolute;
+    background: #ffce00;
+    left: 18.2rem;
+    bottom: 27.6rem;
+    border-radius: 1.2rem;
+    animation: 0.3s spidey-sense linear infinite;
+}
+
+.spidey-sense-anim::before,
+.spidey-sense-anim::after {
+    content: '';
+    width: 100%;
+    height: 82%;
+    position: absolute;
+    border-radius: inherit;
+    background: #ffce00;
+    transform-origin: 50% 100%;
+}
+
+.spidey-sense-anim::before {
+    left: -3.8rem;
+    bottom: -1.5rem;
+    transform: rotate(-45deg);
+}
+
+.spidey-sense-anim::after {
+    right: -3.8rem;
+    bottom: -1.5rem;
+    transform: rotate(45deg);
+}
+
+@keyframes spidey-sense {
+    0% { height: 0; }
+    100% { height: 2.9rem; }
+}
+
+/* Head */
+.spidey-swing .head {
+    width: 7.6rem;
+    height: 10.1rem;
+    background: #e03b3b;
+    position: absolute;
+    left: 14.9rem;
+    top: -0.2rem;
+    border: 0.2rem solid transparent;
+    border-right-width: 0px;
+    border-radius: 7.5rem;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.spidey-swing .eye {
+    background: #efefef;
+    width: 3.7rem;
+    height: 3.9rem;
+    border: 2px solid #333333;
+    border-radius: 5rem 0 0 0;
+    transform-origin: 100% 100%;
+    position: absolute;
+    top: 13px;
+}
+
+.spidey-swing .eye.left {
+    right: 2.5rem;
+    transform: rotate(-45deg);
+}
+
+.spidey-swing .eye.right {
+    right: 2.1rem;
+    transform: rotate(135deg);
+}
+
+/* Body */
+.spidey-swing .body {
+    width: 6.7rem;
+    height: 10.7rem;
+    border: 2px solid transparent;
+    background: #e03b3b;
+    position: absolute;
+    top: 7.1rem;
+    left: 9.2rem;
+    transform: rotate(45deg);
+    border-radius: 7rem;
+}
+
+.spidey-swing .body::before,
+.spidey-swing .body::after {
+    content: '';
+    height: 3.2rem;
+    width: 1.7rem;
+    background: #26518e;
+    position: absolute;
+    top: 3.3rem;
+    z-index: 1;
+}
+
+.spidey-swing .body::before {
+    left: -0.2rem;
+    border-radius: 0 1.1rem 1.1rem 0;
+}
+
+.spidey-swing .body::after {
+    right: -0.2rem;
+    border-radius: 1.1rem 0 0 1.1rem;
+}
+
+.spidey-swing .neck {
+    width: 57%;
+    height: 60%;
+    background: #c12d2d;
+    border: 2px solid transparent;
+    position: absolute;
+    top: -26%;
+    left: 20%;
+    border-radius: 7rem;
+    z-index: 1;
+}
+
+.spidey-swing .lowerbody {
+    background: #e03b3b;
+    width: 6.8rem;
+    height: 11.7rem;
+    border: 2px solid transparent;
+    position: absolute;
+    left: 0;
+    bottom: -4.9rem;
+    transform-origin: 50% 31%;
+    transform: rotate(-45deg);
+    border-radius: 7.5rem;
+}
+
+.spidey-swing .lowerbody::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 1.4rem 1.4rem 0;
+    border-color: transparent #26518e transparent transparent;
+    position: absolute;
+    right: -0.2rem;
+    top: 4.5rem;
+}
+
+/* Legs */
+.spidey-swing .leg {
+    background: #26518e;
+    width: 5rem;
+    height: 14.3rem;
+    border-radius: 5rem;
+    position: absolute;
+    bottom: -1.3rem;
+    transform-origin: 50% 100%;
+    border: 2px solid transparent;
+}
+
+.spidey-swing .leg.left {
+    right: -2.3rem;
+    transform: rotate(-45deg);
+}
+
+.spidey-swing .leg.right {
+    right: 1.2rem;
+    transform: rotate(45deg);
+}
+
+.spidey-swing .boot {
+    width: 10rem;
+    height: 3.4rem;
+    border: 2px solid transparent;
+    position: absolute;
+    transform-origin: 0% 50%;
+    background: #e03b3b;
+}
+
+.spidey-swing .leg.left .boot {
+    left: 1.5rem;
+    top: 0.5rem;
+    transform: rotate(90deg);
+    border-radius: 0 2.2rem 0 0;
+}
+
+.spidey-swing .leg.right .boot {
+    left: 1.9rem;
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+.spidey-swing .foot {
+    background: #e03b3b;
+    width: 5.6rem;
+    height: 2.5rem;
+    position: absolute;
+    border: 2px solid transparent;
+}
+
+.spidey-swing .leg.left .foot {
+    border-radius: 0 0 5.6rem 5.6rem;
+    bottom: 0.8rem;
+    right: 1.2rem;
+    transform-origin: 0 0;
+    transform: translateX(100%) rotate(45deg);
+}
+
+.spidey-swing .leg.right .foot {
+    bottom: -0.2rem;
+    right: 0;
+    transform-origin: 0 100%;
+    transform: translateX(100%) rotate(-43deg);
+    border-radius: 5.6rem 5.6rem 0 0;
+}
+
+/* Arms */
+.spidey-swing .arm {
+    background: #e03b3b;
+    border: 2px solid transparent;
+    position: absolute;
+    top: -0.2rem;
+}
+
+.spidey-swing .arm.left {
+    width: 7.7rem;
+    height: 3.7rem;
+    right: 80%;
+    border-radius: 1.9rem 0 0 0;
+}
+
+.spidey-swing .arm.right {
+    width: 7.7rem;
+    height: 3.7rem;
+    left: 78%;
+}
+
+.spidey-swing .forearm {
+    background: #e03b3b;
+    border: 2px solid transparent;
+    position: absolute;
+    left: -2px;
+}
+
+.spidey-swing .arm.left .forearm {
+    width: 3.7rem;
+    height: 8.3rem;
+    border-radius: 1.9rem 0 0 0;
+    top: -0.2rem;
+}
+
+.spidey-swing .arm.right .forearm {
+    height: 3.7rem;
+    width: 7.3rem;
+    left: 100%;
+    top: -0.2rem;
+    border-radius: 0 4rem 4rem 0;
+}
+
+.spidey-swing .finger {
+    width: 4rem;
+    height: 1.6rem;
+    background: #e03b3b;
+    border: 2px solid transparent;
+    position: absolute;
+    bottom: -1.6rem;
+    left: 0;
+    border-radius: 4rem;
+    transform-origin: 10% 50%;
+}
+
+.spidey-swing .arm.left .finger:nth-child(2) {
+    transform: rotate(135deg);
+}
+
+.spidey-swing .arm.left .finger:nth-child(3) {
+    left: 4px;
+    bottom: -14px;
+    transform: rotate(115deg);
+    background: #c12d2d;
+    z-index: -1;
+}
+
+.spidey-swing .arm.right .finger {
+    top: 0.6rem;
+    right: 0.5rem;
+    left: auto;
+    transform: rotate(-45deg);
+}
+
+.spidey-swing .arm.right .finger:nth-child(1) {
+    width: 4.2rem;
+}
+
+.spidey-swing .arm.right .finger:nth-child(2) {
+    background: #c12d2d;
+    top: 0.4rem;
+    right: 0.2rem;
+    width: 1.8rem;
+    border-radius: 0 1rem 0 0;
+}
+
+.spidey-swing .arm.right .finger:nth-child(3) {
+    top: 1.6rem;
+    right: -3rem;
+    width: 4.5rem;
+}
+
+/* Spider Emblem */
+.spidey-swing .emblem {
+    width: 0.5rem;
+    height: 1.6rem;
+    background: #000;
+    position: absolute;
+    top: 0;
+    right: -0.1rem;
+    bottom: -1rem;
+    left: 0;
+    margin: auto;
+    border-radius: 0.5rem;
+}
+
+.spidey-swing .emblem-leg-tl, 
+.spidey-swing .emblem-leg-tr, 
+.spidey-swing .emblem-leg-bl, 
+.spidey-swing .emblem-leg-br {
+    position: absolute;
+    width: 1.3rem;
+    height: 0.3rem;
+    background: #000;
+}
+
+.spidey-swing .emblem-leg-tl::before, 
+.spidey-swing .emblem-leg-tl::after,
+.spidey-swing .emblem-leg-tr::before, 
+.spidey-swing .emblem-leg-tr::after,
+.spidey-swing .emblem-leg-bl::before, 
+.spidey-swing .emblem-leg-bl::after,
+.spidey-swing .emblem-leg-br::before, 
+.spidey-swing .emblem-leg-br::after {
+    content: '';
+    position: absolute;
+    background: #000;
+    border-radius: 0.2rem;
+    width: 0.2rem;
+}
+
+.spidey-swing .emblem-leg-tl, 
+.spidey-swing .emblem-leg-tr {
+    bottom: 0.9rem;
+}
+
+.spidey-swing .emblem-leg-tl {
+    left: 0;
+}
+
+.spidey-swing .emblem-leg-tl::before {
+    height: 1.1rem;
+    right: 0.4rem;
+    bottom: 0;
+}
+
+.spidey-swing .emblem-leg-tl::after {
+    height: 1.6rem;
+    right: 0;
+    bottom: 0;
+}
+
+.spidey-swing .emblem-leg-tr {
+    right: 0;
+}
+
+.spidey-swing .emblem-leg-tr::before {
+    height: 1.1rem;
+    left: 0.3rem;
+    bottom: 0;
+}
+
+.spidey-swing .emblem-leg-tr::after {
+    height: 1.6rem;
+    left: -0.1rem;
+    bottom: 0;
+}
+
+.spidey-swing .emblem-leg-br, 
+.spidey-swing .emblem-leg-bl {
+    bottom: 0.4rem;
+}
+
+.spidey-swing .emblem-leg-br::before, 
+.spidey-swing .emblem-leg-bl::before {
+    height: 2.2rem;
+}
+
+.spidey-swing .emblem-leg-br::after, 
+.spidey-swing .emblem-leg-bl::after {
+    height: 1.8rem;
+}
+
+.spidey-swing .emblem-leg-br {
+    left: 0;
+}
+
+.spidey-swing .emblem-leg-br::before {
+    right: 0.4rem;
+}
+
+.spidey-swing .emblem-leg-br::after {
+    right: 0;
+}
+
+.spidey-swing .emblem-leg-bl {
+    right: 0;
+}
+
+.spidey-swing .emblem-leg-bl::before {
+    left: 0.4rem;
+    top: 0;
+}
+
+.spidey-swing .emblem-leg-bl::after {
+    left: 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 721px) {
+    .spidey-animation-wrapper {
+        font-size: 5px;
+    }
+}

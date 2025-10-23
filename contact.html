@@ -1,46 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Page</title>
-  <link rel="stylesheet" href="css/contact.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Say Hi - Vatsalya Dabhi</title>
+    <link rel="stylesheet" href="css/sayHi.css">
+    <link rel="stylesheet" href="css/spidermanAnimation.css">
 </head>
 <body>
 
-  <!-- Custom Cursor -->
-  <div id="cursor"></div>
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
 
-  <!-- Contact Page -->
-  <section class="contact-page">
-    <div class="contact-container">
-      <div class="contact-form-wrapper">
-        <form id="contactForm" class="contact-form">
-          <textarea
-            id="messageInput"
-            class="message-input"
-            placeholder="Type your message..."
-          ></textarea>
-        </form>
-      </div>
+    <!-- Contact Page -->
+    <section class="contact-page">
+        <div class="contact-split">
+            
+            <!-- LEFT SIDE - FORM -->
+            <div class="contact-left">
+                <form id="contactForm" class="contact-form">
+                    
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="413b95fe-43fd-49f5-a5e0-c28bfbb739fc">
+                    
+                    <!-- Two fields in one row: Name + Email -->
+                    <div class="form-row-split">
+                        <input type="text" name="name" placeholder="Name*" required class="form-input">
+                        <input type="email" name="email" placeholder="Email*" required class="form-input">
+                    </div>
+
+                    <!-- Message below -->
+                    <textarea name="message" placeholder="Message*" rows="8" required class="form-textarea"></textarea>
+                    
+                </form>
+            </div>
+
+            <!-- RIGHT SIDE - GREETING TEXT -->
+            <div class="contact-right">
+                <h1 class="greeting-text">
+                    Say hi !<br>
+                    big things start with small talks.<br>
+                </h1>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Fixed Buttons -->
+    <div class="button-group">
+        <a href="index.html" class="btn-back" data-hover>
+            <span>← go back</span>
+        </a>
+        <button id="btnSend" class="btn-send" type="submit" form="contactForm" data-hover>
+            <span>send →</span>
+        </button>
     </div>
-  </section>
 
-  <!-- Fixed Buttons -->
-  <div class="button-group">
-    <a href="index.html" class="btn-back" data-hover>
-      <span>← go back</span>
-    </a>
-    <button id="btnSend" class="btn-send" type="submit" form="contactForm" data-hover>
-      <span>send →</span>
-    </button>
-  </div>
+    <!-- Success & Error Messages -->
+    <div id="successMessage" class="success-message">Message sent! Redirecting...</div>
+    <div id="errorMessage" class="error-message">Something went wrong. Try again.</div>
 
-  <!-- Success & Error Messages -->
-  <div id="successMessage" class="success-message">Message sent successfully!</div>
-  <div id="errorMessage" class="error-message">Something went wrong. Try again.</div>
-
-  <!-- JS -->
-  <script src="js/contact.js"></script>
+    <script src="js/sayHi.js"></script>
 </body>
 </html>

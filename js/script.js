@@ -510,32 +510,189 @@ experienceCards.forEach(card => {
         card.style.setProperty('--x', x + 'px');
         card.style.setProperty('--y', y + 'px');
     });
-});
-
-// ===========================
-// WEB3FORMS SUCCESS HANDLING
+});// ===========================
+// CONTACT FORM WITH DYNAMIC SUBJECT & SPIDER-MAN
 // ===========================
 
 const contactForm = document.getElementById('contactFormMain');
 
 if (contactForm) {
+    console.log('✅ Form found:', contactForm);
+    
     contactForm.addEventListener('submit', function(e) {
-        // Let form submit naturally to Web3Forms
+        e.preventDefault(); // Prevent default submission
+        
+        console.log('📧 Form submitting...');
+        console.log('Form action:', contactForm.action);
+        console.log('Form method:', contactForm.method);
+        
+        // Get form values
+        const name = contactForm.querySelector('input[name="name"]').value;
+        const email = contactForm.querySelector('input[name="email"]').value;
+        const phone = contactForm.querySelector('input[name="phone"]').value || 'Not provided';
+        const message = contactForm.querySelector('textarea[name="message"]').value;
+        const accessKey = contactForm.querySelector('input[name="access_key"]').value;
+        
+        // Create dynamic subject with sender name
+        const subject = `💼 New Portfolio Message from ${name}`;
+        
+        console.log('Dynamic subject:', subject);
+        
+        // Change button state
         const sendBtn = contactForm.querySelector('.btn-send-contact span');
-        sendBtn.textContent = 'Sending...';
+        const originalText = sendBtn ? sendBtn.textContent : 'Send';
+        if (sendBtn) {
+            sendBtn.textContent = 'Sending...';
+            console.log('✅ Button text changed');
+        }
+        
+        // Prepare form data for Web3Forms
+        const formData = new FormData();
+        formData.append('access_key', accessKey);
+        formData.append('subject', subject); // Dynamic subject with name
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('message', message);
+        formData.append('from_name', 'Portfolio Contact Form');
+        
+        // Log form data
+        console.log('Sending data:');
+        for (let [key, value] of formData.entries()) {
+            console.log(`  ${key}: ${value}`);
+        }
+        
+        // Send to Web3Forms
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('📬 Response:', data);
+            
+            if (data.success) {
+                console.log('✅ Email sent successfully!');
+                
+                // Success feedback
+                if (sendBtn) {
+                    sendBtn.textContent = 'Sent! ✓';
+                }
+                contactForm.reset();
+                
+                // 🕷️ Show Spider-Man swinging animation
+                showSpidermanSwing();
+                
+                // After Spider-Man completes (3 seconds), scroll to top
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }, 3000);
+                
+                // Reset button after scrolling
+                setTimeout(() => {
+                    if (sendBtn) {
+                        sendBtn.textContent = originalText;
+                    }
+                }, 4000);
+                
+            } else {
+                console.error('❌ Send failed:', data);
+                if (sendBtn) {
+                    sendBtn.textContent = 'Failed. Try again';
+                }
+                
+                setTimeout(() => {
+                    if (sendBtn) {
+                        sendBtn.textContent = originalText;
+                    }
+                }, 3000);
+            }
+        })
+        .catch(error => {
+            console.error('❌ Network Error:', error);
+            if (sendBtn) {
+                sendBtn.textContent = 'Network Error';
+            }
+            
+            setTimeout(() => {
+                if (sendBtn) {
+                    sendBtn.textContent = originalText;
+                }
+            }, 3000);
+        });
     });
 }
 
-// Check for success redirect
-window.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('success') === 'true') {
-        // Show confetti (you already have this function)
-        setTimeout(() => {
-            createConfetti();
-        }, 300);
-        
-        // Clean URL
-        window.history.replaceState({}, document.title, window.location.pathname);
-    }
+// ===========================
+// SPIDER-MAN SWINGING ANIMATION
+// ===========================
+
+function showSpidermanSwing() {
+    console.log('🕷️ Launching Spider-Man animation!');
+    
+    // Create Spider-Man animation container
+    const spideyContainer = document.createElement('div');
+    spideyContainer.className = 'spidey-animation-wrapper';
+    spideyContainer.innerHTML = `
+        <div class="spidey-swing">
+            <div class="web-swing"></div> 
+            <div class="spidey-sense-anim"></div>
+            <div class="head">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+            </div>
+            <div class="body">
+                <div class="neck"></div>
+                <div class="arm left">
+                    <div class="forearm">
+                        <div class="finger"></div>
+                        <div class="finger"></div>
+                        <div class="finger"></div>
+                    </div>
+                </div>
+                <div class="arm right">
+                    <div class="forearm">
+                        <div class="finger"></div>
+                        <div class="finger"></div>
+                        <div class="finger"></div>
+                    </div>
+                </div>
+                <div class="lowerbody">
+                    <div class="leg right">
+                        <div class="boot">
+                            <div class="foot"></div>
+                        </div>
+                    </div>
+                    <div class="leg left">
+                        <div class="boot">
+                            <div class="foot"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="emblem">
+                    <div class="emblem-leg-tl"></div>
+                    <div class="emblem-leg-tr"></div>
+                    <div class="emblem-leg-bl"></div>
+                    <div class="emblem-leg-br"></div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(spideyContainer);
+    console.log('✅ Spider-Man added to DOM and swinging!');
+    
+    // Remove after animation completes (3 seconds)
+    setTimeout(() => {
+        spideyContainer.remove();
+        console.log('✅ Spider-Man animation complete and removed');
+    }, 3000);
+}
+
+// Check for errors
+window.addEventListener('error', function(e) {
+    console.error('❌ JavaScript Error:', e.message);
 });
