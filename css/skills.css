@@ -419,12 +419,13 @@
 }
 
 /* ===========================
-   MOBILE - HORIZONTAL SCROLL
+   MOBILE - HORIZONTAL SCROLL (FIXED)
    =========================== */
 
 @media (max-width: 768px) {
     .skills {
         padding: 60px 0;
+        overflow-x: hidden; /* Prevent horizontal overflow */
     }
 
     .skills-header {
@@ -434,10 +435,14 @@
     }
 
     .section-title-left {
-        font-size: 42px;
+        font-size: clamp(32px, 8vw, 42px);
     }
 
-    /* Horizontal scroll container */
+    .section-subtitle-left {
+        font-size: 16px;
+    }
+
+    /* Horizontal scroll container - FIXED */
     .bento-grid {
         display: flex;
         gap: 16px;
@@ -445,8 +450,9 @@
         overflow-y: hidden;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        padding: 0 20px 20px;
-        margin-bottom: 40px;
+        padding: 0 24px 24px;
+        margin: 0 0 40px 0;
+        scrollbar-width: none; /* Firefox */
     }
 
     /* Hide scrollbar */
@@ -454,13 +460,15 @@
         display: none;
     }
 
-    /* Each card fits perfectly on screen */
+    /* Each card fits perfectly on screen - FIXED */
     .bento-card {
-        min-width: 85%;
+        min-width: calc(100vw - 80px); /* Full width minus padding with buffer */
+        max-width: calc(100vw - 80px);
+        width: calc(100vw - 80px);
         flex-shrink: 0;
         scroll-snap-align: center;
-        padding: 28px;
-        border-radius: 22px;
+        padding: 24px;
+        border-radius: 20px;
         min-height: auto;
         max-height: none;
     }
@@ -481,20 +489,40 @@
     }
 
     .card-visual {
-        height: 120px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+
+    /* Smaller abstract shapes for mobile */
+    .shape-1 {
+        width: 60px;
+        height: 60px;
+    }
+
+    .shape-2 {
+        width: 45px;
+        height: 45px;
+    }
+
+    .mobile-frame {
+        width: 60px;
+        height: 100px;
     }
 
     .bento-card-title {
         font-size: 18px;
+        margin-bottom: 10px;
     }
 
     .bento-card-desc {
         font-size: 14px;
+        margin-bottom: 16px;
+        line-height: 1.5;
     }
 
     .skill-tag {
         font-size: 12px;
-        padding: 5px 10px;
+        padding: 5px 12px;
     }
 
     /* Education mobile */
@@ -503,7 +531,7 @@
     }
 
     .education h3 {
-        font-size: 32px;
+        font-size: clamp(28px, 7vw, 36px);
         margin-bottom: 32px;
     }
 
@@ -525,7 +553,7 @@
 }
 
 /* ===========================
-   SMALL SCREENS (Phones)
+   SMALL SCREENS (Phones) - FIXED
    =========================== */
 @media (max-width: 480px) {
     .skills {
@@ -533,52 +561,112 @@
     }
 
     .skills-header {
-        padding: 0 16px;
+        padding: 0 20px;
         margin-bottom: 32px;
     }
 
     .section-title-left {
-        font-size: 36px;
+        font-size: clamp(28px, 9vw, 36px);
     }
 
+    .section-subtitle-left {
+        font-size: 14px;
+    }
+
+    /* Adjusted for smaller phones */
     .bento-grid {
-        padding: 0 16px 20px;
+        padding: 0 20px 20px;
+        gap: 12px;
     }
 
     .bento-card {
-        min-width: 90%;
-        padding: 24px;
+        min-width: calc(100vw - 64px); /* More conservative padding */
+        max-width: calc(100vw - 64px);
+        width: calc(100vw - 64px);
+        padding: 20px;
         border-radius: 18px;
+    }
+
+    .card-visual {
+        height: 90px;
+        margin-bottom: 16px;
+    }
+
+    .shape-1 {
+        width: 50px;
+        height: 50px;
+    }
+
+    .shape-2 {
+        width: 38px;
+        height: 38px;
+    }
+
+    .mobile-frame {
+        width: 50px;
+        height: 85px;
     }
 
     .bento-card-title {
         font-size: 17px;
+        margin-bottom: 8px;
     }
 
     .bento-card-desc {
         font-size: 13px;
+        margin-bottom: 14px;
     }
 
     .skill-tag {
         font-size: 11px;
-        padding: 4px 9px;
+        padding: 4px 10px;
     }
 
     /* Education small mobile */
     .education {
-        padding: 0 16px;
+        padding: 0 20px;
     }
 
     .education h3 {
-        font-size: px;
+        font-size: clamp(26px, 8vw, 32px);
     }
 
     .education-item {
         padding: 20px 0;
     }
 
-    .education-coursework {
+    .education-degree {
+        font-size: 17px;
+    }
+
+    .education-school {
+        font-size: 15px;
+    }
+
+    .education-location {
         font-size: 13px;
+    }
+
+    .education-coursework {
+        font-size: 12px;
+    }
+}
+
+/* Extra small screens (very small phones) */
+@media (max-width: 360px) {
+    .bento-card {
+        min-width: calc(100vw - 56px);
+        max-width: calc(100vw - 56px);
+        width: calc(100vw - 56px);
+        padding: 18px;
+    }
+
+    .bento-grid {
+        padding: 0 18px 18px;
+    }
+
+    .card-visual {
+        height: 80px;
     }
 }
 
