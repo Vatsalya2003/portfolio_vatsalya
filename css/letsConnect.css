@@ -280,3 +280,32 @@
         font-size: 12px;
     }
 }
+/* ===========================
+   PHONE INPUT VALIDATION
+   =========================== */
+
+.phone-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.phone-input-wrapper.error input {
+    border-bottom-color: #ff6b6b !important;
+}
+
+.phone-error {
+    color: #ff6b6b;
+    font-size: 13px;
+    margin-top: -8px;
+    margin-bottom: 8px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.phone-error.show {
+    opacity: 1;
+    height: auto;
+    margin-top: 4px;
+}

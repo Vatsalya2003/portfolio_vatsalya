@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vatsalya Dabhi :- Portfolio</title>
-    <meta name="description" content="Vatsalya Dabhi - portfolio">
+    <meta name="description" content="Vatsalya Dabhi : portfolio">
+    <link rel="icon" href="assets/logo/favicon.PNG" type="image/PNG">
     <link rel="stylesheet" href="css/cursor.css">
     <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/floatingLogo.css">
@@ -182,27 +183,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="bento-grid" style="margin-top: 24px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-            <div class="bento-card" data-scroll>
-                <div class="card-visual">
-                    <div class="icon-abstract">
-                        <div class="abstract-shape shape-1"></div>
-                    </div>
-                </div>
-                <h3 class="bento-card-title">Development Tools</h3>
-                <p class="bento-card-desc">IDEs and development environment</p>
-                <div class="bento-tags">
-                    <span class="skill-tag">Xcode</span>
-                    <span class="skill-tag">Android Studio</span>
-                    <span class="skill-tag">VS Code</span>
-                    <span class="skill-tag">IntelliJ IDEA</span>
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">Figma</span>
-                </div>
-            </div>
-        </div> -->
-
 
             <div class="scroll-dots">
                 <span class="dot active"></span>
@@ -624,8 +604,13 @@
 
                     <div class="form-inline">
                         <input type="email" name="email" placeholder="Email*" required>
-                        <input type="tel" name="phone" placeholder="Phone">
+                        <div class="phone-input-wrapper" id="phoneWrapper">
+                            <input type="tel" name="phone" id="phone" placeholder="Phone (e.g. +1 234 567 8900)" maxlength="20">
+                        </div>
                     </div>
+
+                    <!-- Phone error message -->
+                    <p class="phone-error" id="phoneError">Enter valid number with country code</p>
 
                     <textarea name="message" placeholder="Message*" rows="3" required></textarea>
 
