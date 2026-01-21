@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vatsalya Dabhi :- Portfolio</title>
-    <meta name="description" content="Vatsalya Dabhi : portfolio">
+    <meta name="description" content="Vatsalya Dabhi: portfolio">
     <link rel="icon" href="assets/logo/favicon.png" type="image/png">
     <link rel="stylesheet" href="css/cursor.css">
     <link rel="stylesheet" href="css/navigation.css">
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/iphone-mockups.css">
     <link rel="stylesheet" href="css/letsConnect.css">
     <link rel="stylesheet" href="css/spidermanAnimation.css">
+    <link rel="stylesheet" href="css/chatAssistant/chatbot.css">
 </head>
 
 <body>
@@ -621,6 +622,46 @@
             </div>
         </div>
     </section>
+    <!-- AI Assistant Chatbot -->
+<button class="chat-fab" id="chatFab" aria-label="Chat with AI Assistant">
+    <svg class="chat-fab-icon" viewBox="0 0 24 24" fill="white">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+    </svg>
+</button>
+
+<div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+        <div class="chat-avatar">🕷️</div>
+        <div class="chat-header-info">
+            <div class="chat-header-name">Vatsalya's AI Assistant</div>
+            <div class="chat-header-status">
+                <span class="status-dot"></span>
+                Online • Ask me anything
+            </div>
+        </div>
+        <button class="chat-close" id="chatClose">×</button>
+    </div>
+    
+    <div class="chat-messages" id="chatMessages">
+        <!-- Messages will be added here -->
+    </div>
+    
+    <div class="quick-replies" id="quickReplies">
+        <button class="quick-reply" data-message="Tell me about Vatsalya">About Vatsalya</button>
+        <button class="quick-reply" data-message="What are his skills?">Skills</button>
+        <button class="quick-reply" data-message="Show me his projects">Projects</button>
+        <button class="quick-reply" data-message="How can I contact him?">Contact</button>
+    </div>
+    
+    <div class="chat-input-container">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Type a message..." autocomplete="off">
+        <button class="chat-send" id="chatSend">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+        </button>
+    </div>
+</div>
 
     <footer class="footer">
         <p>© 2025 Vatsalya Dabhi. All rights reserved.</p>
@@ -629,6 +670,7 @@
 
     <script src="js/script.js"></script>
     <script src="js/contact-form.js"></script>
+    <script src="js/chatbot.js"></script>
 
 </body>
 
