@@ -308,7 +308,7 @@
   }
 
   function downloadVCard() {
-    const vc = `BEGIN:VCARD\nVERSION:3.0\nFN:Vatsalya\nTITLE:iOS Developer\nORG:Northeastern University\nEMAIL:vatsalyadabhi05@gmail.com\nTEL:+12065514161\nURL:https://www.vatsalya.site/\nNOTE:MS CS @ Northeastern Seattle | iOS Developer\nEND:VCARD`;
+    const vc = `BEGIN:VCARD\nVERSION:3.0\nFN:Vatsalya\nTITLE:Vatsalya Dabhi \nEMAIL:vatsalyadabhi05@gmail.com\nTEL:+12065514161\nURL:https://www.vatsalya.site/\nEND:VCARD`;
     const b = new Blob([vc], { type: 'text/vcard' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(b); a.download = 'Vatsalya.vcf';
